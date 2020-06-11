@@ -53,3 +53,15 @@
   background-position: center center;
   box-sizing: border-box;
 }
+
+
+.footer {
+  margin: 66px 0 60px 0;
+}
+
+.footer__copyright {
+  color: #545454;
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.2;
+}
