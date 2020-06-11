@@ -2,6 +2,5 @@
 @import url(../header/__line/header__line.css);
 
 .header {
-  margin: 45px auto 0 auto;
-  max-width: 70%;
+  margin-top: 45px;
 }
