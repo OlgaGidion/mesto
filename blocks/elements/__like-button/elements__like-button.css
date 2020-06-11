@@ -1,5 +1,5 @@
 .elements__like-button {
-  height: 18px;
+  height: 21px;
   width: 21px;
   border: none;
   background-color: transparent;
@@ -7,4 +7,9 @@
   background-repeat: no-repeat;
   background-position: center center;
   box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.elements__like-button:focus {
+  outline: none;
 }
