@@ -1,0 +1,5 @@
+.elements__item {
+  min-width: 0;
+  border-radius: 10px;
+  overflow: hidden;
+}

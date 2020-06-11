@@ -1,0 +1,6 @@
+.elements__info {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  padding: 25px 21px 31px;
+}
