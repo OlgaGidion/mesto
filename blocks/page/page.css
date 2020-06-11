@@ -5,3 +5,10 @@
   margin: 0 auto;
   outline: 3px dashed yellow;
 }
+
+@media (max-width: 450px) {
+  .page {
+    width: auto;
+    margin: 0 20px;
+  }
+}
