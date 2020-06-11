@@ -1,0 +1,10 @@
+@import url(./_icon/button_icon.css);
+
+.button {
+  transition: opacity 0.2s;
+  cursor: pointer;
+}
+
+.button:focus {
+  outline: none;
+}

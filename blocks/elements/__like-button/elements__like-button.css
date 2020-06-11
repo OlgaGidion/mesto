@@ -9,7 +9,3 @@
   box-sizing: border-box;
   flex-shrink: 0;
 }
-
-.elements__like-button:focus {
-  outline: none;
-}

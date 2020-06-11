@@ -10,7 +10,3 @@
   background-repeat: no-repeat;
   background-position: center center;
 }
-
-.profile__edit-button:focus {
-  outline: none;
-}
