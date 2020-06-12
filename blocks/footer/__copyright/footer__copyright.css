@@ -6,7 +6,7 @@
 }
 
 @media (max-width: 450px) {
-  .footer {
+  .footer__copyright {
     font-size: 14px;
   }
 }
