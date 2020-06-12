@@ -1,3 +1,7 @@
+.button_icon {
+  background-color: transparent;
+}
+
 .button_icon:hover {
   opacity: 0.6;
 }
