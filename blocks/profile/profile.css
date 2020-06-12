@@ -11,9 +11,14 @@
   align-items: center;
 }
 
+@media (max-width: 768px) {
+  .profile {
+    flex-direction: column;
+  }
+}
+
 @media (max-width: 450px) {
   .profile {
     margin-top: 42px;
-    flex-direction: column;
   }
 }

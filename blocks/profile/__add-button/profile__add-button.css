@@ -9,9 +9,15 @@
   background-position: center center;
 }
 
+@media (max-width: 768px) {
+  .profile__add-button {
+    width: 50%;
+    margin-top: 36px;
+  }
+}
+
 @media (max-width: 450px) {
   .profile__add-button {
     width: 100%;
-    margin-top: 36px;
   }
 }
