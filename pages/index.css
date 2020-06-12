@@ -7,3 +7,21 @@
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/footer/footer.css);
+
+.popup-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup {
+  width: 430px;
+  min-height: 100px;
+  margin: auto;
+  background-color: white;
+  border-radius: 10px;
+}
