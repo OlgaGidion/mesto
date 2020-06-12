@@ -1,87 +1,11 @@
 @import url(../vendor/normalize.css);
 @import url(../vendor/fonts/fonts.css);
 @import url(../blocks/button/button.css);
+@import url(../blocks/input-text/input-text.css);
 @import url(../blocks/root/root.css);
 @import url(../blocks/page/page.css);
 @import url(../blocks/header/header.css);
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/footer/footer.css);
-
-.popup {
-  display: none;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.popup_opened {
-  display: flex;
-}
-
-.popup__container {
-  position: relative;
-  width: 430px;
-  min-height: 100px;
-  margin: auto;
-  padding: 34px 36px 36px;
-  background-color: white;
-  color: black;
-  border-radius: 10px;
-  box-sizing: border-box;
-}
-
-.popup__close-button {
-  position: absolute;
-  top: -35px;
-  right: -35px;
-  width: 40px;
-  height: 40px;
-  background-image: url(../images/close-button.svg);
-  background-size: cover;
-  border: none;
-  box-sizing: border-box;
-}
-
-.popup__title {
-  margin: 0 0 37px 0;
-}
-
-.popup__fieldset {
-  border: none;
-  padding: 0;
-  margin: 0;
-}
-
-.input {
-  border: 0;
-  outline: 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  width: 100%;
-  padding: 13px 0;
-  font-size: 14px;
-  line-height: 1.2;
-}
-
-.popup__name {
-  margin-bottom: 17px;
-}
-
-.popup__description {
-
-}
-
-.popup__submit-button {
-  margin-top: 48px;
-  display: block;
-  background-color: black;
-  color: white;
-  border: none;
-  width: 100%;
-  padding: 14px 30px 16px;
-  border-radius: 2px;
-}
-
+@import url(../blocks/popup/popup.css);
