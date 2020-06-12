@@ -3,3 +3,10 @@
   font-size: 18px;
   line-height: 1.2;
 }
+
+@media (max-width: 450px) {
+  .profile__text {
+    margin-top: 14px;
+    font-size: 14px;
+  }
+}
