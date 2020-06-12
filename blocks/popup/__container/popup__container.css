@@ -9,3 +9,17 @@
   border-radius: 10px;
   box-sizing: border-box;
 }
+
+@media (max-width: 768px) {
+  .popup__container {
+    width: 350px;
+  }
+}
+
+@media (max-width: 450px) {
+  .popup__container {
+    width: calc(100% - 70px);
+    min-width: calc(320px - 70px);
+    padding: 20px 15px;
+  }
+}
