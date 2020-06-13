@@ -7,6 +7,7 @@ let popup = document.querySelector('.popup');
 let popupCloseButton = popup.querySelector('.popup__close-button');
 let popupNameInput = popup.querySelector('.popup__input-name');
 let popupDescriptionInput = popup.querySelector('.popup__input-description');
+let popupForm = popup.querySelector('.popup__form');
 
 function editButtonClickHandler() {
   popupNameInput.value = profileTitle.textContent;
@@ -19,5 +20,15 @@ function popupCloseButtonClickHandler() {
   popup.classList.remove('popup_opened');
 }
 
+function popupFormSubmitHandler(evt) {
+  evt.preventDefault();
+
+  profileTitle.textContent = popupNameInput.value;
+  profileText.textContent = popupDescriptionInput.value;
+
+  popup.classList.remove('popup_opened');
+}
+
 editButton.addEventListener('click', editButtonClickHandler);
 popupCloseButton.addEventListener('click', popupCloseButtonClickHandler);
+popupForm.addEventListener('submit', popupFormSubmitHandler);
