@@ -1,13 +1,16 @@
 'use strict';
 
 let editButton = document.querySelector('.profile__edit-button');
+let popup = document.querySelector('.popup');
+let popupCloseButton = popup.querySelector('.popup__close-button');
 
-editButton.addEventListener('click', function() {
-  let popup = document.querySelector('.popup');
+function editButtonClickHandler() {
   popup.classList.add('popup_opened');
+}
 
-  let popupCloseButton = popup.querySelector('.popup__close-button');
-  popupCloseButton.addEventListener('click', function() {
-    popup.classList.remove('popup_opened');
-  })
-});
+function popupCloseButtonClickHandler() {
+  popup.classList.remove('popup_opened');
+}
+
+editButton.addEventListener('click', editButtonClickHandler);
+popupCloseButton.addEventListener('click', popupCloseButtonClickHandler);
