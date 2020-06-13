@@ -9,15 +9,23 @@ let popupNameInput = popup.querySelector('.popup__input-name');
 let popupDescriptionInput = popup.querySelector('.popup__input-description');
 let popupForm = popup.querySelector('.popup__form');
 
+function openPopup() {
+  popup.classList.add('popup_opened');
+}
+
+function closePopup() {
+  popup.classList.remove('popup_opened');
+}
+
 function editButtonClickHandler() {
   popupNameInput.value = profileTitle.textContent;
   popupDescriptionInput.value = profileText.textContent;
 
-  popup.classList.add('popup_opened');
+  openPopup();
 }
 
 function popupCloseButtonClickHandler() {
-  popup.classList.remove('popup_opened');
+  closePopup();
 }
 
 function popupFormSubmitHandler(evt) {
@@ -26,7 +34,7 @@ function popupFormSubmitHandler(evt) {
   profileTitle.textContent = popupNameInput.value;
   profileText.textContent = popupDescriptionInput.value;
 
-  popup.classList.remove('popup_opened');
+  closePopup();
 }
 
 editButton.addEventListener('click', editButtonClickHandler);
