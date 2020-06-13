@@ -14,3 +14,12 @@ function popupCloseButtonClickHandler() {
 
 editButton.addEventListener('click', editButtonClickHandler);
 popupCloseButton.addEventListener('click', popupCloseButtonClickHandler);
+
+let profileTitle = document.querySelector('.profile__title');
+let profileText = document.querySelector('.profile__text');
+
+let popupNameInput = popup.querySelector('.popup__input-name');
+let popupDescriptionInput = popup.querySelector('.popup__input-description');
+
+popupNameInput.value = profileTitle.textContent;
+popupDescriptionInput.value = profileText.textContent;
