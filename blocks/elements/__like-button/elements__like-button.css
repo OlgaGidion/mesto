@@ -9,3 +9,7 @@
   box-sizing: border-box;
   flex-shrink: 0;
 }
+
+.elements__like-button:hover {
+  opacity: 0.6;
+}

@@ -1,10 +1,8 @@
-@import url(./_icon/button_icon.css);
-@import url(./_text/button_text.css);
-
 .button {
-  transition: opacity 0.2s;
-  cursor: pointer;
   padding: 0;
+  cursor: pointer;
+  background-color: transparent;
+  transition: opacity 0.2s;
 }
 
 .button:focus {

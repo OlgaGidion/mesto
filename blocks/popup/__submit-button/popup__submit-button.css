@@ -8,3 +8,7 @@
   padding: 14px 30px 16px;
   border-radius: 2px;
 }
+
+.popup__submit-button:hover {
+  opacity: 0.8;
+}
