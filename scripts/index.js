@@ -24,10 +24,6 @@ function editButtonClickHandler() {
   openPopup();
 }
 
-function popupCloseButtonClickHandler() {
-  closePopup();
-}
-
 function popupFormSubmitHandler(evt) {
   evt.preventDefault();
 
@@ -38,5 +34,5 @@ function popupFormSubmitHandler(evt) {
 }
 
 editButton.addEventListener('click', editButtonClickHandler);
-popupCloseButton.addEventListener('click', popupCloseButtonClickHandler);
+popupCloseButton.addEventListener('click', closePopup);
 popupForm.addEventListener('submit', popupFormSubmitHandler);
