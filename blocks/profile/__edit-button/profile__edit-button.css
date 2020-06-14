@@ -9,3 +9,10 @@
   background-repeat: no-repeat;
   background-position: center center;
 }
+
+@media (max-width: 450px) {
+  .profile__edit-button {
+    width: 18px;
+    height: 18px;
+  }
+}
