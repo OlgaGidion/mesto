@@ -1,6 +1,7 @@
 .profile__info {
   flex-grow: 1;
   margin: 0 30px;
+  min-width: 0;
 }
 
 @media (max-width: 768px) {
