@@ -1,13 +1,12 @@
-.page {
+.placement {
   min-width: calc(320px - 40px);
   max-width: 882px;
   width: 70%;
   margin: 0 auto;
-  /* outline: 3px dashed yellow; */
 }
 
 @media (max-width: 450px) {
-  .page {
+  .placement {
     width: auto;
     margin: 0 20px;
   }
