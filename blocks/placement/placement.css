@@ -5,6 +5,12 @@
   margin: 0 auto;
 }
 
+@media (max-width: 768px) {
+  .placement {
+    width: 85%;
+  }
+}
+
 @media (max-width: 450px) {
   .placement {
     width: auto;
