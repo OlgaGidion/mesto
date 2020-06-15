@@ -1,4 +1,4 @@
-.elements__like-button {
+.button_type_like {
   height: 21px;
   width: 21px;
   border: none;
@@ -10,6 +10,6 @@
   flex-shrink: 0;
 }
 
-.elements__like-button:hover {
+.button_type_like:hover {
   opacity: 0.6;
 }

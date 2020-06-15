@@ -1,4 +1,4 @@
-.popup__close-button {
+.button_type_close {
   position: absolute;
   top: -45px;
   right: -45px;
@@ -10,6 +10,6 @@
   box-sizing: border-box;
 }
 
-.popup__close-button:hover {
+.button_type_close:hover {
   opacity: 0.6;
 }
