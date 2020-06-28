@@ -29,68 +29,7 @@
       </section>
 
       <section class="elements">
-        <ul class="elements__list">
-          <li class="elements__item">
-            <div class="elements__image-container">
-              <img class="elements__image" src="./images/balticsea.jpg" alt="Балтийское море">
-              <button class="button button_type_delete" type="button"></button>
-            </div>
-            <div class="elements__info">
-              <p class="elements__title">Балтийское море</p>
-              <button class="button button_type_like" type="button"></button>
-            </div>
-          </li>
-          <li class="elements__item">
-            <div class="elements__image-container">
-              <img class="elements__image" src="./images/caucasus.jpg" alt="Кавказские горы">
-              <button class="button button_type_delete" type="button"></button>
-            </div>
-            <div class="elements__info">
-              <p class="elements__title">Северный Кавказ</p>
-              <button class="button button_type_like" type="button"></button>
-            </div>
-          </li>
-          <li class="elements__item">
-            <div class="elements__image-container">
-              <img class="elements__image" src="./images/siberia.jpg" alt="Лес в снегу">
-              <button class="button button_type_delete" type="button"></button>
-            </div>
-            <div class="elements__info">
-              <p class="elements__title">Сибирь</p>
-              <button class="button button_type_like" type="button"></button>
-            </div>
-          </li>
-          <li class="elements__item">
-            <div class="elements__image-container">
-              <img class="elements__image" src="./images/urals.jpg" alt="Горы">
-              <button class="button button_type_delete" type="button"></button>
-            </div>
-            <div class="elements__info">
-              <p class="elements__title">Уральские горы</p>
-              <button class="button button_type_like" type="button"></button>
-            </div>
-          </li>
-          <li class="elements__item">
-            <div class="elements__image-container">
-              <img class="elements__image" src="./images/karelia.jpg" alt="Лес на берегу озера">
-              <button class="button button_type_delete" type="button"></button>
-            </div>
-            <div class="elements__info">
-              <p class="elements__title">Карелия</p>
-              <button class="button button_type_like" type="button"></button>
-            </div>
-          </li>
-          <li class="elements__item">
-            <div class="elements__image-container">
-              <img class="elements__image" src="./images/baikal.jpg" alt="Озеро Байкал">
-              <button class="button button_type_delete" type="button"></button>
-            </div>
-            <div class="elements__info">
-              <p class="elements__title">Байкал</p>
-              <button class="button button_type_like" type="button"></button>
-            </div>
-          </li>
-        </ul>
+        <ul class="elements__list"></ul>
       </section>
 
     </main>
@@ -126,6 +65,19 @@
         </form>
       </div>
     </div>
+
+    <template id="element-template">
+      <li class="elements__item">
+        <div class="elements__image-container">
+          <img class="elements__image">
+          <button class="button button_type_delete" type="button"></button>
+        </div>
+        <div class="elements__info">
+          <p class="elements__title"></p>
+          <button class="button button_type_like" type="button"></button>
+        </div>
+      </li>
+    </template>
 
     <script src="./scripts/index.js"></script>
   </body>
