@@ -48,17 +48,19 @@ const elementsList = document.querySelector('.elements__list');
 const elementTemplate = document.querySelector('#element-template');
 
 initialCards
-  .map(data => {
-    const element = elementTemplate.content.cloneNode(true);
-    const image = element.querySelector('.elements__image');
-    const title = element.querySelector('.elements__title');
-
-    image.setAttribute('src', data.link);
-    title.textContent = data.name;
-
-    return element;
-  })
+  .map(data => createElement(data.name, data.link))
   .forEach(element => elementsList.append(element));
+
+function createElement(name, link) {
+  const element = elementTemplate.content.cloneNode(true);
+  const image = element.querySelector('.elements__image');
+  const title = element.querySelector('.elements__title');
+
+  image.setAttribute('src', link);
+  title.textContent = name;
+
+  return element;
+}
 
 function openEditPopup() {
   editPopup.classList.add('popup_opened');
@@ -92,8 +94,21 @@ function editPopupFormSubmitHandler(evt) {
   closeEditPopup();
 }
 
+function addPopupFormSubmitHandler(evt) {
+  evt.preventDefault();
+
+  const name = addPopupNameInput.value;
+  const link = addPopupDescriptionInput.value;
+
+  const newElement = createElement(name, link);
+  elementsList.prepend(newElement);
+
+  closeAddPopup();
+}
+
 editButton.addEventListener('click', editButtonClickHandler);
 addButton.addEventListener('click', openAddPopup);
 editPopupCloseButton.addEventListener('click', closeEditPopup);
 editPopupForm.addEventListener('submit', editPopupFormSubmitHandler);
 addPopupCloseButton.addEventListener('click', closeAddPopup);
+addPopupForm.addEventListener('submit', addPopupFormSubmitHandler);
