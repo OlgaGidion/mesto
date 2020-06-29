@@ -14,6 +14,10 @@
   z-index: 20;
 }
 
+.image-popup * {
+  outline: 1px red solid;
+}
+
 .image-popup {
   display: none;
   position: fixed;
@@ -26,14 +30,16 @@
 }
 
 .image-popup__figure {
-  background: red;
   position: relative;
   margin: auto;
 }
 
 .image-popup__image {
-  background: yellow;
   display: block;
   max-width: 75vw;
   max-height: 75vh;
+}
+
+.image-popup__caption {
+  margin-top: 10px;
 }

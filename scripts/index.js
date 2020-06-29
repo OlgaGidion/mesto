@@ -44,6 +44,11 @@ const addPopupNameInput = addPopup.querySelector('.popup__input-name');
 const addPopupDescriptionInput = addPopup.querySelector('.popup__input-description');
 const addPopupForm = addPopup.querySelector('.popup__form');
 
+const imagePopup = document.querySelector('.image-popup');
+const imagePopupImage = imagePopup.querySelector('.image-popup__image');
+const imagePopupCaption = imagePopup.querySelector('.image-popup__caption');
+const imagePopupCloseButton = imagePopup.querySelector('.button_type_close');
+
 const elementsList = document.querySelector('.elements__list');
 const elementTemplate = document.querySelector('#element-template');
 
@@ -58,6 +63,7 @@ function createElement(name, link) {
   const deleteButton = element.querySelector('.button_type_delete');
   const likeButton = element.querySelector('.button_type_like');
 
+  image.addEventListener('click', elementImageClickHandler);
   deleteButton.addEventListener('click', elementDeleteButtonHandler);
   likeButton.addEventListener('click', elementLikeButtonHandler);
 
@@ -90,6 +96,17 @@ function closeAddPopup() {
   addPopup.classList.remove('popup_opened');
 }
 
+function openImagePopup(name, link) {
+  imagePopupCaption.textContent = name;
+  imagePopupImage.setAttribute('src', link);
+
+  imagePopup.classList.add('popup_opened');
+}
+
+function closeImagePopup() {
+  imagePopup.classList.remove('popup_opened');
+}
+
 function editPopupFormSubmitHandler(evt) {
   evt.preventDefault();
 
@@ -109,6 +126,14 @@ function addPopupFormSubmitHandler(evt) {
   elementsList.prepend(newElement);
 
   closeAddPopup();
+}
+
+function elementImageClickHandler(evt) {
+  const image = evt.currentTarget;
+  const name = image.closest('.elements__item').querySelector('.elements__title').textContent;
+  const link = image.getAttribute('src');
+
+  openImagePopup(name, link);
 }
 
 function elementDeleteButtonHandler(evt) {
@@ -132,3 +157,5 @@ editPopupForm.addEventListener('submit', editPopupFormSubmitHandler);
 
 addPopupCloseButton.addEventListener('click', closeAddPopup);
 addPopupForm.addEventListener('submit', addPopupFormSubmitHandler);
+
+imagePopupCloseButton.addEventListener('click', closeImagePopup);
