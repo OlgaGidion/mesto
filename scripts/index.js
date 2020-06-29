@@ -67,6 +67,9 @@ function createElement(name, link) {
 }
 
 function openEditPopup() {
+  editPopupNameInput.value = profileTitle.textContent;
+  editPopupDescriptionInput.value = profileText.textContent;
+
   editPopup.classList.add('popup_opened');
 }
 
@@ -75,18 +78,14 @@ function closeEditPopup() {
 }
 
 function openAddPopup() {
+  addPopupNameInput.value = '';
+  addPopupDescriptionInput.value = '';
+
   addPopup.classList.add('popup_opened');
 }
 
 function closeAddPopup() {
   addPopup.classList.remove('popup_opened');
-}
-
-function editButtonClickHandler() {
-  editPopupNameInput.value = profileTitle.textContent;
-  editPopupDescriptionInput.value = profileText.textContent;
-
-  openEditPopup();
 }
 
 function editPopupFormSubmitHandler(evt) {
@@ -117,7 +116,7 @@ function elementDeleteButtonHandler(evt) {
   element.remove();
 }
 
-editButton.addEventListener('click', editButtonClickHandler);
+editButton.addEventListener('click', openEditPopup);
 addButton.addEventListener('click', openAddPopup);
 
 editPopupCloseButton.addEventListener('click', closeEditPopup);
