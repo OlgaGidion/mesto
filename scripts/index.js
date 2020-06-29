@@ -56,8 +56,10 @@ function createElement(name, link) {
   const image = element.querySelector('.elements__image');
   const title = element.querySelector('.elements__title');
   const deleteButton = element.querySelector('.button_type_delete');
+  const likeButton = element.querySelector('.button_type_like');
 
   deleteButton.addEventListener('click', elementDeleteButtonHandler);
+  likeButton.addEventListener('click', elementLikeButtonHandler);
 
   image.setAttribute('src', link);
   image.setAttribute('alt', name);
@@ -114,6 +116,12 @@ function elementDeleteButtonHandler(evt) {
 
   const element = evt.currentTarget.closest('.elements__item');
   element.remove();
+}
+
+function elementLikeButtonHandler(evt) {
+  evt.preventDefault();
+
+  evt.currentTarget.classList.toggle('button_type_like-selected');
 }
 
 editButton.addEventListener('click', openEditPopup);
