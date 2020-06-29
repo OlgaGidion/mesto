@@ -57,6 +57,7 @@ function createElement(name, link) {
   const title = element.querySelector('.elements__title');
 
   image.setAttribute('src', link);
+  image.setAttribute('alt', name);
   title.textContent = name;
 
   return element;
