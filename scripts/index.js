@@ -38,6 +38,12 @@ const editPopupNameInput = editPopup.querySelector('.popup__input-name');
 const editPopupDescriptionInput = editPopup.querySelector('.popup__input-description');
 const editPopupForm = editPopup.querySelector('.popup__form');
 
+const addPopup = document.querySelector('.popup_type_add');
+const addPopupCloseButton = addPopup.querySelector('.button_type_close');
+const addPopupNameInput = addPopup.querySelector('.popup__input-name');
+const addPopupDescriptionInput = addPopup.querySelector('.popup__input-description');
+const addPopupForm = addPopup.querySelector('.popup__form');
+
 const elementsList = document.querySelector('.elements__list');
 const elementTemplate = document.querySelector('#element-template');
 
@@ -62,14 +68,18 @@ function closeEditPopup() {
   editPopup.classList.remove('popup_opened');
 }
 
+function openAddPopup() {
+  addPopup.classList.add('popup_opened');
+}
+
+function closeAddPopup() {
+  addPopup.classList.remove('popup_opened');
+}
+
 function editButtonClickHandler() {
   editPopupNameInput.value = profileTitle.textContent;
   editPopupDescriptionInput.value = profileText.textContent;
 
-  openEditPopup();
-}
-
-function addButtonClickHandler() {
   openEditPopup();
 }
 
@@ -83,6 +93,7 @@ function editPopupFormSubmitHandler(evt) {
 }
 
 editButton.addEventListener('click', editButtonClickHandler);
-addButton.addEventListener('click', addButtonClickHandler);
+addButton.addEventListener('click', openAddPopup);
 editPopupCloseButton.addEventListener('click', closeEditPopup);
 editPopupForm.addEventListener('submit', editPopupFormSubmitHandler);
+addPopupCloseButton.addEventListener('click', closeAddPopup);
