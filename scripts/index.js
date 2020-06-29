@@ -55,6 +55,9 @@ function createElement(name, link) {
   const element = elementTemplate.content.cloneNode(true);
   const image = element.querySelector('.elements__image');
   const title = element.querySelector('.elements__title');
+  const deleteButton = element.querySelector('.button_type_delete');
+
+  deleteButton.addEventListener('click', elementDeleteButtonHandler);
 
   image.setAttribute('src', link);
   image.setAttribute('alt', name);
@@ -107,9 +110,18 @@ function addPopupFormSubmitHandler(evt) {
   closeAddPopup();
 }
 
+function elementDeleteButtonHandler(evt) {
+  evt.preventDefault();
+
+  const element = evt.currentTarget.closest('.elements__item');
+  element.remove();
+}
+
 editButton.addEventListener('click', editButtonClickHandler);
 addButton.addEventListener('click', openAddPopup);
+
 editPopupCloseButton.addEventListener('click', closeEditPopup);
 editPopupForm.addEventListener('submit', editPopupFormSubmitHandler);
+
 addPopupCloseButton.addEventListener('click', closeAddPopup);
 addPopupForm.addEventListener('submit', addPopupFormSubmitHandler);
