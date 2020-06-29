@@ -30,11 +30,14 @@ const initialCards = [
 const profileTitle = document.querySelector('.profile__title');
 const profileText = document.querySelector('.profile__text');
 const editButton = document.querySelector('.button_type_edit');
-const popup = document.querySelector('.popup');
-const popupCloseButton = popup.querySelector('.button_type_close');
-const popupNameInput = popup.querySelector('.popup__input-name');
-const popupDescriptionInput = popup.querySelector('.popup__input-description');
-const popupForm = popup.querySelector('.popup__form');
+const addButton = document.querySelector('.button_type_add');
+
+const editPopup = document.querySelector('.popup_type_edit');
+const editPopupCloseButton = editPopup.querySelector('.button_type_close');
+const editPopupNameInput = editPopup.querySelector('.popup__input-name');
+const editPopupDescriptionInput = editPopup.querySelector('.popup__input-description');
+const editPopupForm = editPopup.querySelector('.popup__form');
+
 const elementsList = document.querySelector('.elements__list');
 const elementTemplate = document.querySelector('#element-template');
 
@@ -51,30 +54,35 @@ initialCards
   })
   .forEach(element => elementsList.append(element));
 
-function openPopup() {
-  popup.classList.add('popup_opened');
+function openEditPopup() {
+  editPopup.classList.add('popup_opened');
 }
 
-function closePopup() {
-  popup.classList.remove('popup_opened');
+function closeEditPopup() {
+  editPopup.classList.remove('popup_opened');
 }
 
 function editButtonClickHandler() {
-  popupNameInput.value = profileTitle.textContent;
-  popupDescriptionInput.value = profileText.textContent;
+  editPopupNameInput.value = profileTitle.textContent;
+  editPopupDescriptionInput.value = profileText.textContent;
 
-  openPopup();
+  openEditPopup();
 }
 
-function popupFormSubmitHandler(evt) {
+function addButtonClickHandler() {
+  openEditPopup();
+}
+
+function editPopupFormSubmitHandler(evt) {
   evt.preventDefault();
 
-  profileTitle.textContent = popupNameInput.value;
-  profileText.textContent = popupDescriptionInput.value;
+  profileTitle.textContent = editPopupNameInput.value;
+  profileText.textContent = editPopupDescriptionInput.value;
 
-  closePopup();
+  closeEditPopup();
 }
 
 editButton.addEventListener('click', editButtonClickHandler);
-popupCloseButton.addEventListener('click', closePopup);
-popupForm.addEventListener('submit', popupFormSubmitHandler);
+addButton.addEventListener('click', addButtonClickHandler);
+editPopupCloseButton.addEventListener('click', closeEditPopup);
+editPopupForm.addEventListener('submit', editPopupFormSubmitHandler);
