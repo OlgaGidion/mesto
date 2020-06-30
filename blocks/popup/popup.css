@@ -17,29 +17,3 @@
 .image-popup * {
   outline: 1px red solid;
 }
-
-.image-popup {
-  display: none;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.9);
-  z-index: 20;
-}
-
-.image-popup__figure {
-  position: relative;
-  margin: auto;
-}
-
-.image-popup__image {
-  display: block;
-  max-width: 75vw;
-  max-height: 75vh;
-}
-
-.image-popup__caption {
-  margin-top: 10px;
-}
