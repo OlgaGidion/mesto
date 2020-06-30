@@ -20,6 +20,6 @@
   .popup__container {
     width: calc(100% - 80px);
     min-width: calc(320px - 80px);
-    padding: 20px 15px;
+    padding: 30px 20px;
   }
 }

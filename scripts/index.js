@@ -52,10 +52,6 @@ const imagePopupCloseButton = imagePopup.querySelector('.button_type_close');
 const elementsList = document.querySelector('.elements__list');
 const elementTemplate = document.querySelector('#element-template');
 
-initialCards
-  .map(data => createElement(data.name, data.link))
-  .forEach(element => elementsList.append(element));
-
 function createElement(name, link) {
   const element = elementTemplate.content.cloneNode(true);
   const image = element.querySelector('.elements__image');
@@ -148,6 +144,10 @@ function elementLikeButtonHandler(evt) {
 
   evt.currentTarget.classList.toggle('button_type_like-selected');
 }
+
+initialCards
+  .map(data => createElement(data.name, data.link))
+  .forEach(element => elementsList.append(element));
 
 editButton.addEventListener('click', openEditPopup);
 addButton.addEventListener('click', openAddPopup);
