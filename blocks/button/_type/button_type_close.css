@@ -13,3 +13,12 @@
 .button_type_close:hover {
   opacity: 0.6;
 }
+
+@media (max-width: 450px) {
+  .button_type_close {
+    top: -34px;
+    right: -34px;
+    width: 42px;
+    height: 42px;
+  }
+}
