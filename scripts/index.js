@@ -31,6 +31,8 @@ const profileTitle = document.querySelector('.profile__title');
 const profileText = document.querySelector('.profile__text');
 const editButton = document.querySelector('.button_type_edit');
 const addButton = document.querySelector('.button_type_add');
+const elementsList = document.querySelector('.elements__list');
+const elementTemplate = document.querySelector('#element-template');
 
 const editPopup = document.querySelector('.popup_type_edit');
 const editPopupCloseButton = editPopup.querySelector('.button_type_close');
@@ -48,9 +50,6 @@ const imagePopup = document.querySelector('.image-popup');
 const imagePopupImage = imagePopup.querySelector('.image-popup__image');
 const imagePopupCaption = imagePopup.querySelector('.image-popup__caption');
 const imagePopupCloseButton = imagePopup.querySelector('.button_type_close');
-
-const elementsList = document.querySelector('.elements__list');
-const elementTemplate = document.querySelector('#element-template');
 
 function createElement(name, link) {
   const element = elementTemplate.content.cloneNode(true);
@@ -117,11 +116,16 @@ function addPopupFormSubmitHandler(evt) {
 
   const name = addPopupNameInput.value;
   const link = addPopupDescriptionInput.value;
+  const isValid = name !== '' && link !== '';
 
-  const newElement = createElement(name, link);
-  elementsList.prepend(newElement);
+  if (isValid) {
+    const newElement = createElement(name, link);
+    elementsList.prepend(newElement);
 
-  closeAddPopup();
+    closeAddPopup();
+  } else {
+    alert('Name and link must be filled in.');
+  }
 }
 
 function elementImageClickHandler(evt) {
