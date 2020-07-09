@@ -77,10 +77,12 @@ function openEditPopup() {
   editPopupDescriptionInput.value = profileText.textContent;
 
   editPopup.classList.add('popup_opened');
+  document.addEventListener('keydown', editPopupKeydownHandler);
 }
 
 function closeEditPopup() {
   editPopup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', editPopupKeydownHandler);
 }
 
 function openAddPopup() {
@@ -101,10 +103,12 @@ function openImagePopup(name, link) {
   imagePopupImage.setAttribute('src', link);
 
   imagePopup.classList.add('popup_opened');
+  document.addEventListener('keydown', imagePopupKeydownHandler);
 }
 
 function closeImagePopup() {
   imagePopup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', imagePopupKeydownHandler);
 }
 
 function editPopupFormSubmitHandler(evt) {
@@ -154,9 +158,21 @@ function elementLikeButtonHandler(evt) {
   evt.currentTarget.classList.toggle('button_type_like-selected');
 }
 
+function editPopupKeydownHandler(evt) {
+  if (evt.key === 'Escape') {
+    closeEditPopup();
+  }
+}
+
 function addPopupKeydownHandler(evt) {
   if (evt.key === 'Escape') {
     closeAddPopup();
+  }
+}
+
+function imagePopupKeydownHandler(evt) {
+  if (evt.key === 'Escape') {
+    closeImagePopup();
   }
 }
 
