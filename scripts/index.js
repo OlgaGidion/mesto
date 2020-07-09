@@ -35,18 +35,21 @@ const elementsList = document.querySelector('.elements__list');
 const elementTemplate = document.querySelector('#element-template');
 
 const editPopup = document.querySelector('.popup_type_edit');
+const editPopupOverlay = editPopup.querySelector('.popup__overlay');
 const editPopupCloseButton = editPopup.querySelector('.button_type_close');
 const editPopupNameInput = editPopup.querySelector('.popup__input-name');
 const editPopupDescriptionInput = editPopup.querySelector('.popup__input-description');
 const editPopupForm = editPopup.querySelector('.popup__form');
 
 const addPopup = document.querySelector('.popup_type_add');
+const addPopupOverlay = addPopup.querySelector('.popup__overlay');
 const addPopupCloseButton = addPopup.querySelector('.button_type_close');
 const addPopupNameInput = addPopup.querySelector('.popup__input-name');
 const addPopupDescriptionInput = addPopup.querySelector('.popup__input-description');
 const addPopupForm = addPopup.querySelector('.popup__form');
 
 const imagePopup = document.querySelector('.image-popup');
+const imagePopupOverlay = imagePopup.querySelector('.image-popup__overlay');
 const imagePopupImage = imagePopup.querySelector('.image-popup__image');
 const imagePopupCaption = imagePopup.querySelector('.image-popup__caption');
 const imagePopupCloseButton = imagePopup.querySelector('.button_type_close');
@@ -156,10 +159,13 @@ initialCards
 editButton.addEventListener('click', openEditPopup);
 addButton.addEventListener('click', openAddPopup);
 
+editPopupOverlay.addEventListener('click', closeEditPopup);
 editPopupCloseButton.addEventListener('click', closeEditPopup);
 editPopupForm.addEventListener('submit', editPopupFormSubmitHandler);
 
+addPopupOverlay.addEventListener('click', closeAddPopup);
 addPopupCloseButton.addEventListener('click', closeAddPopup);
 addPopupForm.addEventListener('submit', addPopupFormSubmitHandler);
 
+imagePopupOverlay.addEventListener('click', closeImagePopup);
 imagePopupCloseButton.addEventListener('click', closeImagePopup);
