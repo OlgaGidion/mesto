@@ -54,6 +54,8 @@ const imagePopupImage = imagePopup.querySelector('.image-popup__image');
 const imagePopupCaption = imagePopup.querySelector('.image-popup__caption');
 const imagePopupCloseButton = imagePopup.querySelector('.button_type_close');
 
+const isClosePopupKey = (key) => key === 'Escape';
+
 function createElement(name, link) {
   const element = elementTemplate.content.cloneNode(true);
   const image = element.querySelector('.elements__image');
@@ -77,11 +79,19 @@ function openEditPopup() {
   editPopupDescriptionInput.value = profileText.textContent;
 
   editPopup.classList.add('popup_opened');
+
+  editPopupOverlay.addEventListener('click', closeEditPopup);
+  editPopupCloseButton.addEventListener('click', closeEditPopup);
+  editPopupForm.addEventListener('submit', editPopupFormSubmitHandler);
   document.addEventListener('keydown', editPopupKeydownHandler);
 }
 
 function closeEditPopup() {
   editPopup.classList.remove('popup_opened');
+
+  editPopupOverlay.removeEventListener('click', closeEditPopup);
+  editPopupCloseButton.removeEventListener('click', closeEditPopup);
+  editPopupForm.removeEventListener('submit', editPopupFormSubmitHandler);
   document.removeEventListener('keydown', editPopupKeydownHandler);
 }
 
@@ -90,11 +100,19 @@ function openAddPopup() {
   addPopupDescriptionInput.value = '';
 
   addPopup.classList.add('popup_opened');
+
+  addPopupOverlay.addEventListener('click', closeAddPopup);
+  addPopupCloseButton.addEventListener('click', closeAddPopup);
+  addPopupForm.addEventListener('submit', addPopupFormSubmitHandler);
   document.addEventListener('keydown', addPopupKeydownHandler);
 }
 
 function closeAddPopup() {
   addPopup.classList.remove('popup_opened');
+
+  addPopupOverlay.removeEventListener('click', closeAddPopup);
+  addPopupCloseButton.removeEventListener('click', closeAddPopup);
+  addPopupForm.removeEventListener('submit', addPopupFormSubmitHandler);
   document.removeEventListener('keydown', addPopupKeydownHandler);
 }
 
@@ -103,11 +121,17 @@ function openImagePopup(name, link) {
   imagePopupImage.setAttribute('src', link);
 
   imagePopup.classList.add('popup_opened');
+
+  imagePopupOverlay.addEventListener('click', closeImagePopup);
+  imagePopupCloseButton.addEventListener('click', closeImagePopup);
   document.addEventListener('keydown', imagePopupKeydownHandler);
 }
 
 function closeImagePopup() {
   imagePopup.classList.remove('popup_opened');
+
+  imagePopupOverlay.removeEventListener('click', closeImagePopup);
+  imagePopupCloseButton.removeEventListener('click', closeImagePopup);
   document.removeEventListener('keydown', imagePopupKeydownHandler);
 }
 
@@ -159,37 +183,26 @@ function elementLikeButtonHandler(evt) {
 }
 
 function editPopupKeydownHandler(evt) {
-  if (evt.key === 'Escape') {
+  if (isClosePopupKey(evt.key)) {
     closeEditPopup();
   }
 }
 
 function addPopupKeydownHandler(evt) {
-  if (evt.key === 'Escape') {
+  if (isClosePopupKey(evt.key)) {
     closeAddPopup();
   }
 }
 
 function imagePopupKeydownHandler(evt) {
-  if (evt.key === 'Escape') {
+  if (isClosePopupKey(evt.key)) {
     closeImagePopup();
   }
 }
 
 initialCards
-  .map(data => createElement(data.name, data.link))
-  .forEach(element => elementsList.append(element));
+  .map((data) => createElement(data.name, data.link))
+  .forEach((element) => elementsList.append(element));
 
 editButton.addEventListener('click', openEditPopup);
 addButton.addEventListener('click', openAddPopup);
-
-editPopupOverlay.addEventListener('click', closeEditPopup);
-editPopupCloseButton.addEventListener('click', closeEditPopup);
-editPopupForm.addEventListener('submit', editPopupFormSubmitHandler);
-
-addPopupOverlay.addEventListener('click', closeAddPopup);
-addPopupCloseButton.addEventListener('click', closeAddPopup);
-addPopupForm.addEventListener('submit', addPopupFormSubmitHandler);
-
-imagePopupOverlay.addEventListener('click', closeImagePopup);
-imagePopupCloseButton.addEventListener('click', closeImagePopup);
