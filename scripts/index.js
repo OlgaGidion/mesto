@@ -88,10 +88,12 @@ function openAddPopup() {
   addPopupDescriptionInput.value = '';
 
   addPopup.classList.add('popup_opened');
+  document.addEventListener('keydown', addPopupKeydownHandler);
 }
 
 function closeAddPopup() {
   addPopup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', addPopupKeydownHandler);
 }
 
 function openImagePopup(name, link) {
@@ -150,6 +152,12 @@ function elementLikeButtonHandler(evt) {
   evt.preventDefault();
 
   evt.currentTarget.classList.toggle('button_type_like-selected');
+}
+
+function addPopupKeydownHandler(evt) {
+  if (evt.key === 'Escape') {
+    closeAddPopup();
+  }
 }
 
 initialCards
