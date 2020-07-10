@@ -206,3 +206,5 @@ initialCards
 
 editButton.addEventListener('click', openEditPopup);
 addButton.addEventListener('click', openAddPopup);
+
+enableValidation();

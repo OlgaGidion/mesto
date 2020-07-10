@@ -43,10 +43,10 @@
       <div class="popup__container">
         <button class="button button_type_close" type="button"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form" name="profile-details">
+        <form class="popup__form" name="profile-details" novalidate>
           <fieldset class="popup__fieldset">
-            <input class="popup__input-name input-text" name="profile-name" type="text">
-            <input class="popup__input-description input-text" name="profile-description" type="text">
+            <input class="popup__input-name input-text" name="profile-name" type="text" minlength="2" maxlength="40" required>
+            <input class="popup__input-description input-text" name="profile-description" type="text" minlength="2" maxlength="200" required>
             <button class="button button_type_submit">Сохранить</button>
           </fieldset>
         </form>
@@ -58,10 +58,10 @@
       <div class="popup__container">
         <button class="button button_type_close" type="button"></button>
         <h2 class="popup__title">Новое место</h2>
-        <form class="popup__form" name="profile-details">
+        <form class="popup__form" name="profile-details" novalidate>
           <fieldset class="popup__fieldset">
-            <input class="popup__input-name input-text" name="profile-name" type="text" placeholder="Название">
-            <input class="popup__input-description input-text" name="profile-description" type="text" placeholder="Ссылка на картинку">
+            <input class="popup__input-name input-text" name="profile-name" type="text" placeholder="Название" minlength="1" maxlength="30" required>
+            <input class="popup__input-description input-text" name="profile-description" type="url" placeholder="Ссылка на картинку" required>
             <button class="button button_type_submit">Создать</button>
           </fieldset>
         </form>
@@ -90,6 +90,7 @@
       </li>
     </template>
 
+    <script src="./scripts/validation.js"></script>
     <script src="./scripts/index.js"></script>
   </body>
 </html>
