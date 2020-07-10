@@ -45,8 +45,10 @@
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="popup__form" name="profile-details" novalidate>
           <fieldset class="popup__fieldset">
-            <input class="popup__input-name input-text" name="profile-name" type="text" minlength="2" maxlength="40" required>
-            <input class="popup__input-description input-text" name="profile-description" type="text" minlength="2" maxlength="200" required>
+            <input id="popup_edit_input_name" class="popup__input-name input-text" name="profile-name" type="text" minlength="2" maxlength="40" required>
+            <span id="popup_edit_input_name_error" class="popup__input-error popup__input-error_hidden"></span>
+            <input id="popup_edit_input_description" class="popup__input-description input-text" name="profile-description" type="text" minlength="2" maxlength="200" required>
+            <span id="popup_edit_input_description_error" class="popup__input-error popup__input-error_hidden"></span>
             <button class="button button_type_submit">Сохранить</button>
           </fieldset>
         </form>
@@ -61,9 +63,9 @@
         <form class="popup__form" name="profile-details" novalidate>
           <fieldset class="popup__fieldset">
             <input id="popup_add_input_name" class="popup__input-name input-text" name="profile-name" type="text" placeholder="Название" minlength="1" maxlength="30" required>
-            <span id="popup_add_input_name_error" class="popup__input-error popup__input-error_hidden">Error1</span>
+            <span id="popup_add_input_name_error" class="popup__input-error popup__input-error_hidden"></span>
             <input id="popup_add_input_description" class="popup__input-description input-text" name="profile-description" type="url" placeholder="Ссылка на картинку" required>
-            <span id="popup_add_input_description_error" class="popup__input-error popup__input-error_hidden">Error2</span>
+            <span id="popup_add_input_description_error" class="popup__input-error popup__input-error_hidden"></span>
             <button class="button button_type_submit">Создать</button>
           </fieldset>
         </form>
