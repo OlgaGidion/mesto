@@ -9,6 +9,7 @@
 @import url(../blocks/button/_type/button_type_close.css);
 @import url(../blocks/button/_type/button_type_submit.css);
 @import url(../blocks/input-text/input-text.css);
+@import url(../blocks/input-text/_error/input-text_error.css);
 @import url(../blocks/root/root.css);
 @import url(../blocks/placement/placement.css);
 @import url(../blocks/header/header.css);

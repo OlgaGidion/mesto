@@ -10,9 +10,14 @@ function enableValidation() {
 
 function inputHandler(evt) {
   const input = evt.target;
+  const inputError = document.querySelector(`#${input.id}_error`);
+
   if (!input.validity.valid) {
-    input.classList.add('popup__input-error');
+    input.classList.add('input-text_error');
+    inputError.classList.remove('popup__input-error_hidden');
+    inputError.textContent = input.validationMessage;
   } else {
-    input.classList.remove('popup__input-error');
+    input.classList.remove('input-text_error');
+    inputError.classList.add('popup__input-error_hidden');
   }
 }
