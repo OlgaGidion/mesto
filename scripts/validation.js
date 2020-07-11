@@ -2,18 +2,12 @@ function enableValidation() {
   const forms = Array.from(document.querySelectorAll('.popup__form'));
   forms.forEach((form) => {
     const submitButton = form.querySelector('.button_type_submit');
-
     const inputs = Array.from(form.querySelectorAll('.input-text'));
+
     inputs.forEach((input) => {
       input.addEventListener('input', () => {
         checkInput(input);
-
-        const isFormValid = !hasInvalidInput(inputs);
-        if (isFormValid) {
-          submitButton.removeAttribute('disabled');
-        } else {
-          submitButton.setAttribute('disabled', true);
-        }
+        checkFormButton(submitButton, inputs);
       });
     });
   });
@@ -29,6 +23,15 @@ function checkInput(input) {
   } else {
     input.classList.remove('input-text_error');
     inputError.classList.add('popup__input-error_hidden');
+  }
+}
+
+function checkFormButton(button, inputs) {
+  const isFormValid = !hasInvalidInput(inputs);
+  if (isFormValid) {
+    button.removeAttribute('disabled');
+  } else {
+    button.setAttribute('disabled', true);
   }
 }
 
