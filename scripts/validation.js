@@ -42,3 +42,14 @@ function checkFormButton(button, inputs) {
 function hasInvalidInput(inputs) {
   return inputs.some((input) => !input.validity.valid);
 }
+
+function resetValidation(form, inputs) {
+  inputs.forEach((input) => {
+    input.classList.remove('input-text_error');
+    const inputError = document.querySelector(`#${input.id}_error`);
+    inputError.classList.add('popup__input-error_hidden');
+  });
+
+  const submitButton = form.querySelector('.button_type_submit');
+  submitButton.removeAttribute('disabled');
+}
