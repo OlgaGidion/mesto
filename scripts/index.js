@@ -75,7 +75,7 @@ function createElement(name, link) {
 }
 
 function openEditPopup() {
-  resetValidation(editPopupForm, [editPopupNameInput, editPopupDescriptionInput]);
+  resetValidation(editPopupForm);
 
   editPopupNameInput.value = profileTitle.textContent;
   editPopupDescriptionInput.value = profileText.textContent;
@@ -98,7 +98,7 @@ function closeEditPopup() {
 }
 
 function openAddPopup() {
-  resetValidation(addPopupForm, [addPopupNameInput, addPopupDescriptionInput]);
+  resetValidation(addPopupForm);
 
   addPopupNameInput.value = '';
   addPopupDescriptionInput.value = '';
