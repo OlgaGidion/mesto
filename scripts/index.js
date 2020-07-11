@@ -78,6 +78,18 @@ function openEditPopup() {
   editPopupNameInput.value = profileTitle.textContent;
   editPopupDescriptionInput.value = profileText.textContent;
 
+  editPopupNameInput.classList.remove('input-text_error');
+  editPopupDescriptionInput.classList.remove('input-text_error');
+
+  const editPopupNameInputError = document.querySelector(`#${editPopupNameInput.id}_error`);
+  editPopupNameInputError.classList.add('popup__input-error_hidden');
+
+  const editPopupDescriptionInputError = document.querySelector(`#${editPopupDescriptionInput.id}_error`);
+  editPopupDescriptionInputError.classList.add('popup__input-error_hidden');
+
+  const editPopupSubmitButton = editPopupForm.querySelector('.button_type_submit');
+  editPopupSubmitButton.removeAttribute('disabled');
+
   editPopup.classList.add('popup_opened');
 
   editPopupOverlay.addEventListener('click', closeEditPopup);
