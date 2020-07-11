@@ -202,4 +202,10 @@ initialCards
 editButton.addEventListener('click', openEditPopup);
 addButton.addEventListener('click', openAddPopup);
 
-enableValidation();
+enableValidation({
+  formSelector: '.popup__form',
+  inputTextSelector: '.input-text',
+  buttonSubmitSelector: '.button_type_submit',
+  inputTextErrorClass: 'input-text_error',
+  inputErrorHiddenClass: 'popup__input-error_hidden'
+});

@@ -1,8 +1,12 @@
-function enableValidation() {
-  const forms = Array.from(document.querySelectorAll('.popup__form'));
+let validationSettings;
+
+function enableValidation(settings) {
+  validationSettings = settings;
+
+  const forms = Array.from(document.querySelectorAll(validationSettings.formSelector));
   forms.forEach((form) => {
-    const submitButton = form.querySelector('.button_type_submit');
-    const inputs = Array.from(form.querySelectorAll('.input-text'));
+    const submitButton = form.querySelector(validationSettings.buttonSubmitSelector);
+    const inputs = Array.from(form.querySelectorAll(validationSettings.inputTextSelector));
 
     inputs.forEach((input) => {
       input.addEventListener('input', () => {
@@ -21,12 +25,12 @@ function checkInput(input) {
   const inputError = document.querySelector(`#${input.id}_error`);
 
   if (!input.validity.valid) {
-    input.classList.add('input-text_error');
-    inputError.classList.remove('popup__input-error_hidden');
+    input.classList.add(validationSettings.inputTextErrorClass);
+    inputError.classList.remove(validationSettings.inputErrorHiddenClass);
     inputError.textContent = input.validationMessage;
   } else {
-    input.classList.remove('input-text_error');
-    inputError.classList.add('popup__input-error_hidden');
+    input.classList.remove(validationSettings.inputTextErrorClass);
+    inputError.classList.add(validationSettings.inputErrorHiddenClass);
   }
 }
 
@@ -44,14 +48,14 @@ function hasInvalidInput(inputs) {
 }
 
 function resetValidation(form) {
-  const inputs = Array.from(form.querySelectorAll('.input-text'));
+  const inputs = Array.from(form.querySelectorAll(validationSettings.inputTextSelector));
   inputs.forEach((input) => {
-    input.classList.remove('input-text_error');
+    input.classList.remove(validationSettings.inputTextErrorClass);
 
     const inputError = document.querySelector(`#${input.id}_error`);
-    inputError.classList.add('popup__input-error_hidden');
+    inputError.classList.add(validationSettings.inputErrorHiddenClass);
   });
 
-  const submitButton = form.querySelector('.button_type_submit');
+  const submitButton = form.querySelector(validationSettings.buttonSubmitSelector);
   submitButton.removeAttribute('disabled');
 }
