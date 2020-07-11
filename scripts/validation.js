@@ -10,6 +10,10 @@ function enableValidation() {
         checkFormButton(submitButton, inputs);
       });
     });
+
+    form.addEventListener('submit', (evt) => {
+      evt.preventDefault();
+    });
   });
 }
 

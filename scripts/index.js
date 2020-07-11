@@ -135,30 +135,21 @@ function closeImagePopup() {
   document.removeEventListener('keydown', imagePopupKeydownHandler);
 }
 
-function editPopupFormSubmitHandler(evt) {
-  evt.preventDefault();
-
+function editPopupFormSubmitHandler() {
   profileTitle.textContent = editPopupNameInput.value;
   profileText.textContent = editPopupDescriptionInput.value;
 
   closeEditPopup();
 }
 
-function addPopupFormSubmitHandler(evt) {
-  evt.preventDefault();
-
+function addPopupFormSubmitHandler() {
   const name = addPopupNameInput.value;
   const link = addPopupDescriptionInput.value;
-  const isValid = name !== '' && link !== '';
 
-  if (isValid) {
-    const newElement = createElement(name, link);
-    elementsList.prepend(newElement);
+  const newElement = createElement(name, link);
+  elementsList.prepend(newElement);
 
-    closeAddPopup();
-  } else {
-    alert('Name and link must be filled in.');
-  }
+  closeAddPopup();
 }
 
 function elementImageClickHandler(evt) {
