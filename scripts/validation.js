@@ -47,15 +47,16 @@ function hasInvalidInput(inputs) {
   return inputs.some((input) => !input.validity.valid);
 }
 
-function resetValidation(form) {
+function checkValidation(form) {
   const inputs = Array.from(form.querySelectorAll(validationSettings.inputTextSelector));
-  inputs.forEach((input) => {
-    input.classList.remove(validationSettings.inputTextErrorClass);
+  const submitButton = form.querySelector(validationSettings.buttonSubmitSelector);
 
+  inputs.forEach((input) => {
     const inputError = document.querySelector(`#${input.id}_error`);
+
+    input.classList.remove(validationSettings.inputTextErrorClass);
     inputError.classList.add(validationSettings.inputErrorHiddenClass);
   });
 
-  const submitButton = form.querySelector(validationSettings.buttonSubmitSelector);
-  submitButton.removeAttribute('disabled');
+  checkFormButton(submitButton, inputs);
 }
