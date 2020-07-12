@@ -123,6 +123,7 @@ function closeAddPopup() {
 function openImagePopup(name, link) {
   imagePopupCaption.textContent = name;
   imagePopupImage.setAttribute('src', link);
+  imagePopupImage.setAttribute('alt', name);
 
   imagePopup.classList.add('popup_opened');
 
