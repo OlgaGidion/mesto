@@ -98,7 +98,7 @@ function editPopupFormSubmitHandler() {
   profileTitle.textContent = editPopupNameInput.value;
   profileText.textContent = editPopupDescriptionInput.value;
 
-  closeEditPopup();
+  closePopup();
 }
 
 function addPopupFormSubmitHandler() {
@@ -108,7 +108,7 @@ function addPopupFormSubmitHandler() {
   const newElement = createElement(name, link);
   elementsList.prepend(newElement);
 
-  closeAddPopup();
+  closePopup();
 }
 
 function elementImageClickHandler(evt) {
