@@ -1,3 +1,5 @@
+'use strict';
+
 function enableValidation(settings) {
   const forms = Array.from(document.querySelectorAll(settings.formSelector));
   forms.forEach((form) => {
