@@ -1,16 +1,12 @@
-let validationSettings;
-
 function enableValidation(settings) {
-  validationSettings = settings;
-
-  const forms = Array.from(document.querySelectorAll(validationSettings.formSelector));
+  const forms = Array.from(document.querySelectorAll(settings.formSelector));
   forms.forEach((form) => {
-    const submitButton = form.querySelector(validationSettings.buttonSubmitSelector);
-    const inputs = Array.from(form.querySelectorAll(validationSettings.inputTextSelector));
+    const submitButton = form.querySelector(settings.buttonSubmitSelector);
+    const inputs = Array.from(form.querySelectorAll(settings.inputTextSelector));
 
     inputs.forEach((input) => {
       input.addEventListener('input', () => {
-        checkInput(input);
+        checkInput(input, settings);
         checkFormButton(submitButton, inputs);
       });
     });
@@ -21,16 +17,16 @@ function enableValidation(settings) {
   });
 }
 
-function checkInput(input) {
+function checkInput(input, settings) {
   const inputError = document.querySelector(`#${input.id}_error`);
 
   if (!input.validity.valid) {
-    input.classList.add(validationSettings.inputTextErrorClass);
-    inputError.classList.remove(validationSettings.inputErrorHiddenClass);
+    input.classList.add(settings.inputTextErrorClass);
+    inputError.classList.remove(settings.inputErrorHiddenClass);
     inputError.textContent = input.validationMessage;
   } else {
-    input.classList.remove(validationSettings.inputTextErrorClass);
-    inputError.classList.add(validationSettings.inputErrorHiddenClass);
+    input.classList.remove(settings.inputTextErrorClass);
+    inputError.classList.add(settings.inputErrorHiddenClass);
   }
 }
 
@@ -47,15 +43,15 @@ function hasInvalidInput(inputs) {
   return inputs.some((input) => !input.validity.valid);
 }
 
-function checkValidation(form) {
-  const inputs = Array.from(form.querySelectorAll(validationSettings.inputTextSelector));
-  const submitButton = form.querySelector(validationSettings.buttonSubmitSelector);
+function checkValidation(form, settings) {
+  const inputs = Array.from(form.querySelectorAll(settings.inputTextSelector));
+  const submitButton = form.querySelector(settings.buttonSubmitSelector);
 
   inputs.forEach((input) => {
     const inputError = document.querySelector(`#${input.id}_error`);
 
-    input.classList.remove(validationSettings.inputTextErrorClass);
-    inputError.classList.add(validationSettings.inputErrorHiddenClass);
+    input.classList.remove(settings.inputTextErrorClass);
+    inputError.classList.add(settings.inputErrorHiddenClass);
   });
 
   checkFormButton(submitButton, inputs);

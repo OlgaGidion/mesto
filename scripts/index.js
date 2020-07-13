@@ -27,6 +27,14 @@ const initialCards = [
   }
 ];
 
+const validationSettings = {
+  formSelector: '.popup__form',
+  inputTextSelector: '.input-text',
+  buttonSubmitSelector: '.button_type_submit',
+  inputTextErrorClass: 'input-text_error',
+  inputErrorHiddenClass: 'popup__input-error_hidden'
+};
+
 const profileTitle = document.querySelector('.profile__title');
 const profileText = document.querySelector('.profile__text');
 const editButton = document.querySelector('.button_type_edit');
@@ -78,7 +86,7 @@ function openEditPopup() {
   editPopupNameInput.value = profileTitle.textContent;
   editPopupDescriptionInput.value = profileText.textContent;
 
-  checkValidation(editPopupForm);
+  checkValidation(editPopupForm, validationSettings);
 
   editPopup.classList.add('popup_opened');
 
@@ -101,7 +109,7 @@ function openAddPopup() {
   addPopupNameInput.value = '';
   addPopupDescriptionInput.value = '';
 
-  checkValidation(addPopupForm);
+  checkValidation(addPopupForm, validationSettings);
 
   addPopup.classList.add('popup_opened');
 
@@ -203,10 +211,4 @@ initialCards
 editButton.addEventListener('click', openEditPopup);
 addButton.addEventListener('click', openAddPopup);
 
-enableValidation({
-  formSelector: '.popup__form',
-  inputTextSelector: '.input-text',
-  buttonSubmitSelector: '.button_type_submit',
-  inputTextErrorClass: 'input-text_error',
-  inputErrorHiddenClass: 'popup__input-error_hidden'
-});
+enableValidation(validationSettings);
