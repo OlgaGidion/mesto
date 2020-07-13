@@ -63,18 +63,12 @@ function openEditPopup() {
 
   editPopup.classList.add('popup_opened');
 
-  editPopupOverlay.addEventListener('click', closeEditPopup);
-  editPopupCloseButton.addEventListener('click', closeEditPopup);
-  editPopupForm.addEventListener('submit', editPopupFormSubmitHandler);
   document.addEventListener('keydown', editPopupKeydownHandler);
 }
 
 function closeEditPopup() {
   editPopup.classList.remove('popup_opened');
 
-  editPopupOverlay.removeEventListener('click', closeEditPopup);
-  editPopupCloseButton.removeEventListener('click', closeEditPopup);
-  editPopupForm.removeEventListener('submit', editPopupFormSubmitHandler);
   document.removeEventListener('keydown', editPopupKeydownHandler);
 }
 
@@ -86,18 +80,12 @@ function openAddPopup() {
 
   addPopup.classList.add('popup_opened');
 
-  addPopupOverlay.addEventListener('click', closeAddPopup);
-  addPopupCloseButton.addEventListener('click', closeAddPopup);
-  addPopupForm.addEventListener('submit', addPopupFormSubmitHandler);
   document.addEventListener('keydown', addPopupKeydownHandler);
 }
 
 function closeAddPopup() {
   addPopup.classList.remove('popup_opened');
 
-  addPopupOverlay.removeEventListener('click', closeAddPopup);
-  addPopupCloseButton.removeEventListener('click', closeAddPopup);
-  addPopupForm.removeEventListener('submit', addPopupFormSubmitHandler);
   document.removeEventListener('keydown', addPopupKeydownHandler);
 }
 
@@ -108,16 +96,12 @@ function openImagePopup(name, link) {
 
   imagePopup.classList.add('popup_opened');
 
-  imagePopupOverlay.addEventListener('click', closeImagePopup);
-  imagePopupCloseButton.addEventListener('click', closeImagePopup);
   document.addEventListener('keydown', imagePopupKeydownHandler);
 }
 
 function closeImagePopup() {
   imagePopup.classList.remove('popup_opened');
 
-  imagePopupOverlay.removeEventListener('click', closeImagePopup);
-  imagePopupCloseButton.removeEventListener('click', closeImagePopup);
   document.removeEventListener('keydown', imagePopupKeydownHandler);
 }
 
@@ -183,5 +167,16 @@ initialCards
 
 editButton.addEventListener('click', openEditPopup);
 addButton.addEventListener('click', openAddPopup);
+
+editPopupOverlay.addEventListener('click', closeEditPopup);
+editPopupCloseButton.addEventListener('click', closeEditPopup);
+editPopupForm.addEventListener('submit', editPopupFormSubmitHandler);
+
+addPopupOverlay.addEventListener('click', closeAddPopup);
+addPopupCloseButton.addEventListener('click', closeAddPopup);
+addPopupForm.addEventListener('submit', addPopupFormSubmitHandler);
+
+imagePopupOverlay.addEventListener('click', closeImagePopup);
+imagePopupCloseButton.addEventListener('click', closeImagePopup);
 
 enableValidation(validationSettings);
