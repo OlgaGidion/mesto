@@ -39,7 +39,7 @@ const imagePopupCloseButton = imagePopup.querySelector('.button_type_close');
 const isClosePopupKey = (key) => key === 'Escape';
 
 function createCard(name, imageLink) {
-  const card = new Card(name, imageLink, '#element-template');
+  const card = new Card(name, imageLink, '#element-template', openImagePopup);
   return card.getElement();
 }
 
