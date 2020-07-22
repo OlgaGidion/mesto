@@ -1,5 +1,7 @@
 'use strict';
 
+import Card from './Card.js';
+
 const validationSettings = {
   formSelector: '.popup__form',
   inputTextSelector: '.input-text',
@@ -13,7 +15,6 @@ const profileText = document.querySelector('.profile__text');
 const editButton = document.querySelector('.button_type_edit');
 const addButton = document.querySelector('.button_type_add');
 const elementsList = document.querySelector('.elements__list');
-const elementTemplate = document.querySelector('#element-template');
 
 const editPopup = document.querySelector('.popup_type_edit');
 const editPopupOverlay = editPopup.querySelector('.popup__overlay');
@@ -37,22 +38,9 @@ const imagePopupCloseButton = imagePopup.querySelector('.button_type_close');
 
 const isClosePopupKey = (key) => key === 'Escape';
 
-function createElement(name, link) {
-  const element = elementTemplate.content.cloneNode(true);
-  const image = element.querySelector('.elements__image');
-  const title = element.querySelector('.elements__title');
-  const deleteButton = element.querySelector('.button_type_delete');
-  const likeButton = element.querySelector('.button_type_like');
-
-  image.addEventListener('click', elementImageClickHandler);
-  deleteButton.addEventListener('click', elementDeleteButtonHandler);
-  likeButton.addEventListener('click', elementLikeButtonHandler);
-
-  image.setAttribute('src', link);
-  image.setAttribute('alt', name);
-  title.textContent = name;
-
-  return element;
+function createCard(name, imageLink) {
+  const card = new Card(name, imageLink, '#element-template');
+  return card.getElement();
 }
 
 function openEditPopup() {
@@ -105,7 +93,7 @@ function addPopupFormSubmitHandler() {
   const name = addPopupNameInput.value;
   const link = addPopupDescriptionInput.value;
 
-  const newElement = createElement(name, link);
+  const newElement = createCard(name, link);
   elementsList.prepend(newElement);
 
   closePopup();
@@ -139,7 +127,7 @@ function popupKeydownHandler(evt) {
 }
 
 initialCards
-  .map((data) => createElement(data.name, data.link))
+  .map((data) => createCard(data.name, data.link))
   .forEach((element) => elementsList.append(element));
 
 editButton.addEventListener('click', openEditPopup);
