@@ -107,19 +107,6 @@ function elementImageClickHandler(evt) {
   openImagePopup(name, link);
 }
 
-function elementDeleteButtonHandler(evt) {
-  evt.preventDefault();
-
-  const element = evt.currentTarget.closest('.elements__item');
-  element.remove();
-}
-
-function elementLikeButtonHandler(evt) {
-  evt.preventDefault();
-
-  evt.currentTarget.classList.toggle('button_type_like-selected');
-}
-
 function popupKeydownHandler(evt) {
   if (isClosePopupKey(evt.key)) {
     closePopup();
