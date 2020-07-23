@@ -1,6 +1,7 @@
 'use strict';
 
 import Card from './Card.js';
+import FormValidator from './FormValidator.js';
 
 const validationSettings = {
   formSelector: '.popup__form',
@@ -22,6 +23,7 @@ const editPopupCloseButton = editPopup.querySelector('.button_type_close');
 const editPopupNameInput = editPopup.querySelector('.popup__input-name');
 const editPopupDescriptionInput = editPopup.querySelector('.popup__input-description');
 const editPopupForm = editPopup.querySelector('.popup__form');
+const editPopupFormValidator = new FormValidator(validationSettings, editPopupForm);
 
 const addPopup = document.querySelector('.popup_type_add');
 const addPopupOverlay = addPopup.querySelector('.popup__overlay');
@@ -29,6 +31,7 @@ const addPopupCloseButton = addPopup.querySelector('.button_type_close');
 const addPopupNameInput = addPopup.querySelector('.popup__input-name');
 const addPopupDescriptionInput = addPopup.querySelector('.popup__input-description');
 const addPopupForm = addPopup.querySelector('.popup__form');
+const addPopupFormValidator = new FormValidator(validationSettings, addPopupForm);
 
 const imagePopup = document.querySelector('.image-popup');
 const imagePopupOverlay = imagePopup.querySelector('.image-popup__overlay');
@@ -47,7 +50,7 @@ function openEditPopup() {
   editPopupNameInput.value = profileTitle.textContent;
   editPopupDescriptionInput.value = profileText.textContent;
 
-  checkValidation(editPopupForm, validationSettings);
+  editPopupFormValidator.checkValidation();
 
   openPopup(editPopup);
 }
@@ -56,7 +59,7 @@ function openAddPopup() {
   addPopupNameInput.value = '';
   addPopupDescriptionInput.value = '';
 
-  checkValidation(addPopupForm, validationSettings);
+  addPopupFormValidator.checkValidation();
 
   openPopup(addPopup);
 }
@@ -99,6 +102,7 @@ function addPopupFormSubmitHandler() {
   closePopup();
 }
 
+// TODO: remove
 function elementImageClickHandler(evt) {
   const image = evt.currentTarget;
   const name = image.closest('.elements__item').querySelector('.elements__title').textContent;
@@ -131,4 +135,5 @@ addPopupForm.addEventListener('submit', addPopupFormSubmitHandler);
 imagePopupOverlay.addEventListener('click', closePopup);
 imagePopupCloseButton.addEventListener('click', closePopup);
 
-enableValidation(validationSettings);
+addPopupFormValidator.enableValidation();
+editPopupFormValidator.enableValidation();
