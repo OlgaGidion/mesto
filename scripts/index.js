@@ -4,7 +4,6 @@ import Card from './Card.js';
 import FormValidator from './FormValidator.js';
 
 const validationSettings = {
-  formSelector: '.popup__form',
   inputTextSelector: '.input-text',
   buttonSubmitSelector: '.button_type_submit',
   inputTextErrorClass: 'input-text_error',
