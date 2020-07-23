@@ -8,6 +8,8 @@
 
 Технические детали:
 * JavaScript
+* ООП
+* Модули
 * HTML
 * CSS
   * Flexbox
