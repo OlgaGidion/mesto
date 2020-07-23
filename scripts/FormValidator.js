@@ -20,7 +20,7 @@ class FormValidator {
     });
   }
 
-  checkValidation() {
+  validate() {
     const inputs = Array.from(this._form.querySelectorAll(this._settings.inputTextSelector));
     const submitButton = this._form.querySelector(this._settings.buttonSubmitSelector);
 

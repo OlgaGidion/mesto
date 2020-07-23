@@ -49,8 +49,7 @@ function openEditPopup() {
   editPopupNameInput.value = profileTitle.textContent;
   editPopupDescriptionInput.value = profileText.textContent;
 
-  editPopupFormValidator.checkValidation();
-
+  editPopupFormValidator.validate();
   openPopup(editPopup);
 }
 
@@ -58,8 +57,7 @@ function openAddPopup() {
   addPopupNameInput.value = '';
   addPopupDescriptionInput.value = '';
 
-  addPopupFormValidator.checkValidation();
-
+  addPopupFormValidator.validate();
   openPopup(addPopup);
 }
 
