@@ -2,6 +2,7 @@
 
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
+import initialCards from './initial-cards.js';
 
 const validationSettings = {
   inputTextSelector: '.input-text',
