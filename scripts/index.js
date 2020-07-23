@@ -99,15 +99,6 @@ function addPopupFormSubmitHandler() {
   closePopup();
 }
 
-// TODO: remove
-function elementImageClickHandler(evt) {
-  const image = evt.currentTarget;
-  const name = image.closest('.elements__item').querySelector('.elements__title').textContent;
-  const link = image.getAttribute('src');
-
-  openImagePopup(name, link);
-}
-
 function popupKeydownHandler(evt) {
   if (isClosePopupKey(evt.key)) {
     closePopup();
