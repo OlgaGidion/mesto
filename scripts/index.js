@@ -1,5 +1,3 @@
-'use strict';
-
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
 import initialCards from './initial-cards.js';
@@ -41,12 +39,12 @@ const imagePopupCloseButton = imagePopup.querySelector('.button_type_close');
 
 const isClosePopupKey = (key) => key === 'Escape';
 
-function createCard(name, imageLink) {
+const createCard = (name, imageLink) => {
   const card = new Card(name, imageLink, '#element-template', openImagePopup);
   return card.getElement();
 }
 
-function openEditPopup() {
+const openEditPopup = () => {
   editPopupNameInput.value = profileTitle.textContent;
   editPopupDescriptionInput.value = profileText.textContent;
 
@@ -54,7 +52,7 @@ function openEditPopup() {
   openPopup(editPopup);
 }
 
-function openAddPopup() {
+const openAddPopup = () => {
   addPopupNameInput.value = '';
   addPopupDescriptionInput.value = '';
 
@@ -62,7 +60,7 @@ function openAddPopup() {
   openPopup(addPopup);
 }
 
-function openImagePopup(name, link) {
+const openImagePopup = (name, link) => {
   imagePopupCaption.textContent = name;
   imagePopupImage.setAttribute('src', link);
   imagePopupImage.setAttribute('alt', name);
@@ -70,27 +68,27 @@ function openImagePopup(name, link) {
   openPopup(imagePopup);
 }
 
-function openPopup(popup) {
+const openPopup = (popup) => {
   popup.classList.add('popup_opened');
 
   document.addEventListener('keydown', popupKeydownHandler);
 }
 
-function closePopup() {
+const closePopup = () => {
   const popup = document.querySelector('.popup_opened');
   popup.classList.remove('popup_opened');
 
   document.removeEventListener('keydown', popupKeydownHandler);
 }
 
-function editPopupFormSubmitHandler() {
+const editPopupFormSubmitHandler = () => {
   profileTitle.textContent = editPopupNameInput.value;
   profileText.textContent = editPopupDescriptionInput.value;
 
   closePopup();
 }
 
-function addPopupFormSubmitHandler() {
+const addPopupFormSubmitHandler = () => {
   const name = addPopupNameInput.value;
   const link = addPopupDescriptionInput.value;
 
@@ -100,7 +98,7 @@ function addPopupFormSubmitHandler() {
   closePopup();
 }
 
-function popupKeydownHandler(evt) {
+const popupKeydownHandler = (evt) => {
   if (isClosePopupKey(evt.key)) {
     closePopup();
   }
