@@ -22,13 +22,9 @@ class Popup {
   }
 
   _handleEscClose(evt) {
-    if (this._isCloseKey(evt.key)) {
+    if (evt.key === 'Escape') {
       this.close();
     }
-  }
-
-  _isCloseKey(key) {
-    return key === 'Escape';
   }
 }
 
