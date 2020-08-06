@@ -17,7 +17,10 @@ const editButton = document.querySelector('.button_type_edit');
 const addButton = document.querySelector('.button_type_add');
 const elementsList = document.querySelector('.elements__list');
 
-const editPopup = new EditPopup('.popup_type_edit', validationSettings);
+const editPopup = new EditPopup('.popup_type_edit', validationSettings, (name, job) => {
+  profileTitle.textContent = name;
+  profileText.textContent = job;
+});
 
 const addPopup = document.querySelector('.popup_type_add');
 const addPopupOverlay = addPopup.querySelector('.popup__overlay');
@@ -58,13 +61,6 @@ const closePopup = () => {
 
   document.removeEventListener('keydown', popupKeydownHandler);
 }
-
-// const editPopupFormSubmitHandler = () => {
-//   profileTitle.textContent = editPopupNameInput.value;
-//   profileText.textContent = editPopupDescriptionInput.value;
-
-//   closePopup();
-// }
 
 const addPopupFormSubmitHandler = () => {
   const name = addPopupNameInput.value;

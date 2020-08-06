@@ -1,20 +1,29 @@
 import PopupWithForm from './PopupWithForm.js';
 
 class EditPopup extends PopupWithForm {
-  constructor(popupSelector, validationSettings) {
+  constructor(popupSelector, validationSettings, submitFunction) {
     super(popupSelector, validationSettings);
 
+    this._submitFunction = submitFunction;
+
     this._nameInput = this._popup.querySelector('.popup__input-name');
-    this._descriptionInput = this._popup.querySelector('.popup__input-description');
+    this._jobInput = this._popup.querySelector('.popup__input-description');
+
+    this._form.addEventListener('submit', () => this._formSubmitHandler());
   }
 
   open(name, job) {
     super.open();
 
     this._nameInput.value = name;
-    this._descriptionInput.value = job;
+    this._jobInput.value = job;
 
     this._formValidator.validate();
+  }
+
+  _formSubmitHandler() {
+    this._submitFunction(this._nameInput.value, this._jobInput.value);
+    this.close();
   }
 }
 
