@@ -1,6 +1,7 @@
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
 import initialCards from './initial-cards.js';
+import PopupWithImage from './PopupWithImage.js';
 
 const validationSettings = {
   inputTextSelector: '.input-text',
@@ -31,16 +32,14 @@ const addPopupDescriptionInput = addPopup.querySelector('.popup__input-descripti
 const addPopupForm = addPopup.querySelector('.popup__form');
 const addPopupFormValidator = new FormValidator(validationSettings, addPopupForm);
 
-// const imagePopup = document.querySelector('.image-popup');
-// const imagePopupOverlay = imagePopup.querySelector('.image-popup__overlay');
-// const imagePopupImage = imagePopup.querySelector('.image-popup__image');
-// const imagePopupCaption = imagePopup.querySelector('.image-popup__caption');
-// const imagePopupCloseButton = imagePopup.querySelector('.button_type_close');
+const imagePopup = new PopupWithImage('.image-popup');
 
 const isClosePopupKey = (key) => key === 'Escape';
 
 const createCard = (name, imageLink) => {
-  const card = new Card(name, imageLink, '#element-template', null);
+  const card = new Card(name, imageLink, '#element-template', (name, imageLink) => {
+    imagePopup.open(name, imageLink);
+  });
   return card.getElement();
 }
 
@@ -59,14 +58,6 @@ const openAddPopup = () => {
   addPopupFormValidator.validate();
   openPopup(addPopup);
 }
-
-// const openImagePopup = (name, link) => {
-//   imagePopupCaption.textContent = name;
-//   imagePopupImage.setAttribute('src', link);
-//   imagePopupImage.setAttribute('alt', name);
-
-//   openPopup(imagePopup);
-// }
 
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
@@ -119,13 +110,5 @@ addPopupOverlay.addEventListener('click', closePopup);
 addPopupCloseButton.addEventListener('click', closePopup);
 addPopupForm.addEventListener('submit', addPopupFormSubmitHandler);
 
-// imagePopupOverlay.addEventListener('click', closePopup);
-// imagePopupCloseButton.addEventListener('click', closePopup);
-
 addPopupFormValidator.enableValidation();
 editPopupFormValidator.enableValidation();
-
-import { PopupWithImage } from './Popup.js';
-
-const a = new PopupWithImage('Olga', 'https://images.unsplash.com/photo-1596295931388-3b8caf2746a7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=975&q=80', '.image-popup');
-a.open();
