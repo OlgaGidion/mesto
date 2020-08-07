@@ -1,9 +1,9 @@
 class Card {
-  constructor(name, imageLink, elementTemplateSelector, openFunction) {
+  constructor(name, imageLink, elementTemplateSelector, handleCardClick) {
     this._name = name;
     this._imageLink = imageLink;
     this._elementTemplate = document.querySelector(elementTemplateSelector);
-    this._openFunction = openFunction;
+    this._handleCardClick = handleCardClick;
   }
 
   getElement() {
@@ -25,7 +25,7 @@ class Card {
   }
 
   _imageClickHandler() {
-    this._openFunction(this._name, this._imageLink);
+    this._handleCardClick(this._name, this._imageLink);
   }
 
   _deleteButtonHandler(evt) {
