@@ -1,4 +1,5 @@
 import initialCards from './initial-cards.js';
+import UserInfo from './UserInfo.js';
 import Card from './Card.js';
 import PopupWithImage from './PopupWithImage.js';
 import EditPopup from './EditPopup.js';
@@ -11,15 +12,14 @@ const validationSettings = {
   inputErrorHiddenClass: 'popup__input-error_hidden'
 };
 
-const profileTitle = document.querySelector('.profile__title');
-const profileText = document.querySelector('.profile__text');
+const userInfo = new UserInfo('.profile__title', '.profile__text');
+
 const editButton = document.querySelector('.button_type_edit');
 const addButton = document.querySelector('.button_type_add');
 const elementsList = document.querySelector('.elements__list');
 
-const editPopup = new EditPopup('.popup_type_edit', validationSettings, (name, job) => {
-  profileTitle.textContent = name;
-  profileText.textContent = job;
+const editPopup = new EditPopup('.popup_type_edit', validationSettings, (name, about) => {
+  userInfo.setUserInfo(name, about);
 });
 
 const addPopup = new AddPopup('.popup_type_add', validationSettings, (name, imageLink) => {
@@ -41,7 +41,8 @@ initialCards
   .forEach((element) => elementsList.append(element));
 
 editButton.addEventListener('click', () => {
-  editPopup.open(profileTitle.textContent, profileText.textContent);
+  const {name, about} = userInfo.getUserInfo();
+  editPopup.open(name, about);
 });
 
 addButton.addEventListener('click', () => {
