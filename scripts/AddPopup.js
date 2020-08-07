@@ -8,8 +8,6 @@ class AddPopup extends PopupWithForm {
 
     this._nameInput = this._popup.querySelector('.popup__input-name');
     this._imageLinkInput = this._popup.querySelector('.popup__input-description');
-
-    this._form.addEventListener('submit', () => this._formSubmitHandler());
   }
 
   open() {
@@ -22,6 +20,8 @@ class AddPopup extends PopupWithForm {
   }
 
   _formSubmitHandler() {
+    super._formSubmitHandler();
+
     this._submitFunction(this._nameInput.value, this._imageLinkInput.value);
     this.close();
   }

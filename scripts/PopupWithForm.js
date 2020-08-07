@@ -10,6 +10,15 @@ class PopupWithForm extends Popup {
     this._formValidator = new FormValidator(validationSettings, this._form);
     this._formValidator.enableValidation();
   }
+
+  _setEventListeners() {
+    super._setEventListeners();
+
+    this._popup.querySelector('.popup__form').addEventListener('submit', () => this._formSubmitHandler());
+  }
+
+  _formSubmitHandler() {
+  }
 }
 
 export default PopupWithForm;

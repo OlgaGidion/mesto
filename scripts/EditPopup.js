@@ -8,8 +8,6 @@ class EditPopup extends PopupWithForm {
 
     this._nameInput = this._popup.querySelector('.popup__input-name');
     this._jobInput = this._popup.querySelector('.popup__input-description');
-
-    this._form.addEventListener('submit', () => this._formSubmitHandler());
   }
 
   open(name, job) {
@@ -22,6 +20,8 @@ class EditPopup extends PopupWithForm {
   }
 
   _formSubmitHandler() {
+    super._formSubmitHandler();
+
     this._submitFunction(this._nameInput.value, this._jobInput.value);
     this.close();
   }
