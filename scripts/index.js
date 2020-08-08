@@ -1,4 +1,5 @@
 import initialCards from './initial-cards.js';
+import Section from './Section.js';
 import UserInfo from './UserInfo.js';
 import Card from './Card.js';
 import PopupWithImage from './PopupWithImage.js';
@@ -16,15 +17,14 @@ const userInfo = new UserInfo('.profile__title', '.profile__text');
 
 const editButton = document.querySelector('.button_type_edit');
 const addButton = document.querySelector('.button_type_add');
-const elementsList = document.querySelector('.elements__list');
 
 const editPopup = new EditPopup('.popup_type_edit', validationSettings, (name, about) => {
   userInfo.setUserInfo(name, about);
 });
 
 const addPopup = new AddPopup('.popup_type_add', validationSettings, (name, imageLink) => {
-  const newElement = createCard(name, imageLink);
-  elementsList.prepend(newElement);
+  const newCard = createCard(name, imageLink);
+  cardsSection.addItem(newCard);
 });
 
 const imagePopup = new PopupWithImage('.image-popup');
@@ -33,12 +33,17 @@ const createCard = (name, imageLink) => {
   const card = new Card(name, imageLink, '#element-template', (name, imageLink) => {
     imagePopup.open(name, imageLink);
   });
-  return card.getElement();
-}
 
-initialCards
-  .map((data) => createCard(data.name, data.link))
-  .forEach((element) => elementsList.append(element));
+  return card.getElement();
+};
+
+const cardsSection = new Section({
+  data: initialCards,
+  renderer: ({name, link}) => {
+    cardsSection.setItem(createCard(name, link));
+  }
+}, '.elements__list');
+cardsSection.renderItems();
 
 editButton.addEventListener('click', () => {
   const {name, about} = userInfo.getUserInfo();
