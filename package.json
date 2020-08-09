@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/OlgaGidion/mesto/issues"
   },
-  "homepage": "https://github.com/OlgaGidion/mesto#readme"
+  "homepage": "https://github.com/OlgaGidion/mesto#readme",
+  "devDependencies": {
+    "webpack": "^4.44.1"
+  }
 }
