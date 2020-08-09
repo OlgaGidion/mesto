@@ -5,7 +5,7 @@ import Card from './Card.js';
 import PopupWithImage from './PopupWithImage.js';
 import EditPopup from './EditPopup.js';
 import AddPopup from './AddPopup.js';
-import './pages/index.css';
+import '../pages/index.css';
 
 const validationSettings = {
   inputTextSelector: '.input-text',
