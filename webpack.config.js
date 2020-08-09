@@ -19,7 +19,20 @@ module.exports = {
         // исключает папку node_modules, файлы в ней обрабатывать не нужно
         exclude: '/node_modules/'
       },
-        // добавили правило для обработки файлов
+      {
+        // применять это правило только к CSS-файлам
+        test: /\.css$/,
+        // при обработке этих файлов нужно использовать
+        // MiniCssExtractPlugin.loader и css-loader
+        loader: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: { importLoaders: 1 }
+          },
+          'postcss-loader'
+        ]
+      },
       {
         // регулярное выражение, которое ищет все файлы с такими расширениями
         test: /\.(png|svg|jpg|gif|woff|woff2)$/,
@@ -31,13 +44,6 @@ module.exports = {
         test: /\.html$/,
         loader: 'html-loader',
       },
-      {
-        // применять это правило только к CSS-файлам
-        test: /\.css$/,
-        // при обработке этих файлов нужно использовать
-        // MiniCssExtractPlugin.loader и css-loader
-        loader:  [MiniCssExtractPlugin.loader, 'css-loader']
-      }
     ]
   },
   plugins: [
