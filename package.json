@@ -1,7 +1,8 @@
 {
   "name": "mesto",
   "version": "1.0.0",
-  "description": "[Ссылка на сайт](https://olgagidion.github.io/mesto)",
+  "description": "Проект Место",
+  "homepage": "https://olgagidion.github.io/mesto",
   "main": "index.js",
   "scripts": {
     "build": "rm -rf dist && webpack",
@@ -12,12 +13,11 @@
     "url": "git+https://github.com/OlgaGidion/mesto.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Olga Gidion",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/OlgaGidion/mesto/issues"
   },
-  "homepage": "https://github.com/OlgaGidion/mesto#readme",
   "devDependencies": {
     "@babel/core": "^7.11.1",
     "@babel/preset-env": "^7.11.0",
