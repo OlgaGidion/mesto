@@ -12,13 +12,16 @@ const userInfo = new UserInfo('.profile__title', '.profile__text');
 const editPopup = new EditPopup('.popup_type_edit', validationSettings, (name, about) => {
   userInfo.setUserInfo(name, about);
 });
+editPopup.setEventListeners();
 
 const addPopup = new AddPopup('.popup_type_add', validationSettings, (name, imageLink) => {
   const newCard = createCard(name, imageLink);
   cardsSection.setItem(newCard);
 });
+addPopup.setEventListeners();
 
 const imagePopup = new PopupWithImage('.image-popup');
+imagePopup.setEventListeners();
 
 const createCard = (name, imageLink) => {
   const card = new Card(name, imageLink, '#element-template', (name, imageLink) => {

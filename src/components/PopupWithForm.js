@@ -11,10 +11,10 @@ class PopupWithForm extends Popup {
     this._formValidator.enableValidation();
   }
 
-  _setEventListeners() {
-    super._setEventListeners();
+  setEventListeners() {
+    super.setEventListeners();
 
-    this._popup.querySelector('.popup__form').addEventListener('submit', () => this._formSubmitHandler());
+    this._form.addEventListener('submit', () => this._formSubmitHandler());
   }
 
   _formSubmitHandler() {
