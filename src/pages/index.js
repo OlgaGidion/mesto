@@ -1,23 +1,13 @@
-import initialCards from '../initial-cards.js';
+import '../pages/index.css';
+import { initialCards, validationSettings, editButton, addButton } from '../utils/constants.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import Card from '../components/Card.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import EditPopup from '../components/EditPopup.js';
 import AddPopup from '../components/AddPopup.js';
-import '../pages/index.css';
-
-const validationSettings = {
-  inputTextSelector: '.input-text',
-  buttonSubmitSelector: '.button_type_submit',
-  inputTextErrorClass: 'input-text_error',
-  inputErrorHiddenClass: 'popup__input-error_hidden'
-};
 
 const userInfo = new UserInfo('.profile__title', '.profile__text');
-
-const editButton = document.querySelector('.button_type_edit');
-const addButton = document.querySelector('.button_type_add');
 
 const editPopup = new EditPopup('.popup_type_edit', validationSettings, (name, about) => {
   userInfo.setUserInfo(name, about);

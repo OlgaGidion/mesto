@@ -1,4 +1,4 @@
-const initialCards = [
+export const initialCards = [
   {
       name: 'Архыз',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -25,4 +25,12 @@ const initialCards = [
   }
 ];
 
-export default initialCards;
+export const validationSettings = {
+  inputTextSelector: '.input-text',
+  buttonSubmitSelector: '.button_type_submit',
+  inputTextErrorClass: 'input-text_error',
+  inputErrorHiddenClass: 'popup__input-error_hidden'
+};
+
+export const editButton = document.querySelector('.button_type_edit');
+export const addButton = document.querySelector('.button_type_add');
