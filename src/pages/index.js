@@ -1,10 +1,10 @@
-import initialCards from './initial-cards.js';
-import Section from './Section.js';
-import UserInfo from './UserInfo.js';
-import Card from './Card.js';
-import PopupWithImage from './PopupWithImage.js';
-import EditPopup from './EditPopup.js';
-import AddPopup from './AddPopup.js';
+import initialCards from '../initial-cards.js';
+import Section from '../components/Section.js';
+import UserInfo from '../components/UserInfo.js';
+import Card from '../components/Card.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import EditPopup from '../components/EditPopup.js';
+import AddPopup from '../components/AddPopup.js';
 import '../pages/index.css';
 
 const validationSettings = {
