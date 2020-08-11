@@ -15,7 +15,7 @@ const editPopup = new EditPopup('.popup_type_edit', validationSettings, (name, a
 
 const addPopup = new AddPopup('.popup_type_add', validationSettings, (name, imageLink) => {
   const newCard = createCard(name, imageLink);
-  cardsSection.addItem(newCard);
+  cardsSection.setItem(newCard);
 });
 
 const imagePopup = new PopupWithImage('.image-popup');
