@@ -15,6 +15,8 @@ class PopupWithForm extends Popup {
   open(values) {
     super.open();
 
+    this._form.reset();
+
     Object.entries(values).forEach(([name, value]) => {
       const input = this._form.elements[name];
       input.value = value;
@@ -28,7 +30,6 @@ class PopupWithForm extends Popup {
       const values = this._getInputValues();
       this._handleFormSubmit(values);
       this.close();
-      // this._form.reset();
     });
   }
 
