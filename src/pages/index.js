@@ -3,21 +3,26 @@ import { initialCards, validationSettings, editButton, addButton } from '../util
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import Card from '../components/Card.js';
+import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
-import EditPopup from '../components/EditPopup.js';
-import AddPopup from '../components/AddPopup.js';
 
 const userInfo = new UserInfo('.profile__title', '.profile__text');
 
-const editPopup = new EditPopup('.popup_type_edit', validationSettings, (name, about) => {
-  userInfo.setUserInfo(name, about);
-});
+const editPopup = new PopupWithForm({
+  popupSelector: '.popup_type_edit',
+  handleFormSubmit: ({ name, about }) => {
+    userInfo.setUserInfo(name, about);
+  }
+}, validationSettings);
 editPopup.setEventListeners();
 
-const addPopup = new AddPopup('.popup_type_add', validationSettings, (name, imageLink) => {
-  const newCard = createCard(name, imageLink);
-  cardsSection.setItem(newCard);
-});
+const addPopup = new PopupWithForm({
+  popupSelector: '.popup_type_add',
+  handleFormSubmit: ({ name, imageLink }) => {
+    const newCard = createCard(name, imageLink);
+    cardsSection.setItem(newCard);
+  }
+}, validationSettings);
 addPopup.setEventListeners();
 
 const imagePopup = new PopupWithImage('.image-popup');
