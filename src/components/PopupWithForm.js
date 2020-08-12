@@ -12,6 +12,15 @@ class PopupWithForm extends Popup {
     this._formValidator.enableValidation();
   }
 
+  open(values) {
+    super.open();
+
+    Object.entries(values).forEach(([name, value]) => {
+      const input = this._form.elements[name];
+      input.value = value;
+    });
+  }
+
   setEventListeners() {
     super.setEventListeners();
 

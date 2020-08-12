@@ -38,17 +38,17 @@ const createCard = (name, imageLink) => {
 
 const cardsSection = new Section({
   data: initialCards,
-  renderer: ({name, link}) => {
+  renderer: ({ name, link }) => {
     cardsSection.setItem(createCard(name, link));
   }
 }, '.elements__list');
 cardsSection.renderItems();
 
 editButton.addEventListener('click', () => {
-  const {name, about} = userInfo.getUserInfo();
-  editPopup.open(name, about);
+  const { name, about } = userInfo.getUserInfo();
+  editPopup.open({ name, about });
 });
 
 addButton.addEventListener('click', () => {
-  addPopup.open();
+  addPopup.open({ name: '', imageLink: '' });
 });
