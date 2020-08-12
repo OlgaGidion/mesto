@@ -19,6 +19,8 @@ class PopupWithForm extends Popup {
       const input = this._form.elements[name];
       input.value = value;
     });
+
+    this._formValidator.validate();
   }
 
   setEventListeners() {
