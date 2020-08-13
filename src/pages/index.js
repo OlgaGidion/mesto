@@ -14,7 +14,7 @@ const editPopup = new PopupWithForm({
   handleFormSubmit: ({ name, about }) => {
     userInfo.setUserInfo(name, about);
   }
-}, validationSettings);
+});
 editPopup.setEventListeners();
 
 const editPopupForm = document.querySelector('.popup_type_edit').querySelector('.popup__form');
@@ -26,7 +26,7 @@ const addPopup = new PopupWithForm({
     const newCard = createCard(name, imageLink);
     cardsSection.setItem(newCard);
   }
-}, validationSettings);
+});
 addPopup.setEventListeners();
 
 const addPopupForm = document.querySelector('.popup_type_add').querySelector('.popup__form');
