@@ -1,5 +1,4 @@
 import Popup from './Popup.js';
-import FormValidator from './FormValidator.js';
 
 class PopupWithForm extends Popup {
   constructor({ popupSelector, handleFormSubmit }, validationSettings) {
@@ -7,9 +6,6 @@ class PopupWithForm extends Popup {
 
     this._form = this._popup.querySelector('.popup__form');
     this._handleFormSubmit = handleFormSubmit;
-
-    this._formValidator = new FormValidator(validationSettings, this._form);
-    this._formValidator.enableValidation();
   }
 
   open(values) {
@@ -19,8 +15,12 @@ class PopupWithForm extends Popup {
       const input = this._form.elements[name];
       input.value = value;
     });
+  }
 
-    this._formValidator.validate();
+  close() {
+    super.close();
+
+    this._form.reset();
   }
 
   setEventListeners() {
@@ -30,7 +30,6 @@ class PopupWithForm extends Popup {
       const values = this._getInputValues();
       this._handleFormSubmit(values);
       this.close();
-      this._form.reset();
     });
   }
 

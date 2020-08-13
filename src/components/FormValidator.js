@@ -2,22 +2,8 @@ class FormValidator {
   constructor(settings, form) {
     this._settings = settings;
     this._form = form;
-  }
 
-  enableValidation() {
-    const submitButton = this._form.querySelector(this._settings.buttonSubmitSelector);
-    const inputs = Array.from(this._form.querySelectorAll(this._settings.inputTextSelector));
-
-    inputs.forEach((input) => {
-      input.addEventListener('input', () => {
-        this._checkInput(input);
-        this._checkFormButton(submitButton, inputs);
-      });
-    });
-
-    this._form.addEventListener('submit', (evt) => {
-      evt.preventDefault();
-    });
+    this._enableValidation();
   }
 
   validate() {
@@ -32,6 +18,22 @@ class FormValidator {
     });
 
     this._checkFormButton(submitButton, inputs);
+  }
+
+  _enableValidation() {
+    const submitButton = this._form.querySelector(this._settings.buttonSubmitSelector);
+    const inputs = Array.from(this._form.querySelectorAll(this._settings.inputTextSelector));
+
+    inputs.forEach((input) => {
+      input.addEventListener('input', () => {
+        this._checkInput(input);
+        this._checkFormButton(submitButton, inputs);
+      });
+    });
+
+    this._form.addEventListener('submit', (evt) => {
+      evt.preventDefault();
+    });
   }
 
   _checkInput(input) {

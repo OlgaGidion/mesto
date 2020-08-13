@@ -5,6 +5,7 @@ import UserInfo from '../components/UserInfo.js';
 import Card from '../components/Card.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
+import FormValidator from '../components/FormValidator.js';
 
 const userInfo = new UserInfo('.profile__title', '.profile__text');
 
@@ -16,6 +17,9 @@ const editPopup = new PopupWithForm({
 }, validationSettings);
 editPopup.setEventListeners();
 
+const editPopupForm = document.querySelector('.popup_type_edit').querySelector('.popup__form');
+const editPopupValidator = new FormValidator(validationSettings, editPopupForm);
+
 const addPopup = new PopupWithForm({
   popupSelector: '.popup_type_add',
   handleFormSubmit: ({ name, imageLink }) => {
@@ -24,6 +28,9 @@ const addPopup = new PopupWithForm({
   }
 }, validationSettings);
 addPopup.setEventListeners();
+
+const addPopupForm = document.querySelector('.popup_type_add').querySelector('.popup__form');
+const addPopupValidator = new FormValidator(validationSettings, addPopupForm);
 
 const imagePopup = new PopupWithImage('.image-popup');
 imagePopup.setEventListeners();
@@ -47,8 +54,10 @@ cardsSection.renderItems();
 editButton.addEventListener('click', () => {
   const { name, about } = userInfo.getUserInfo();
   editPopup.open({ name, about });
+  editPopupValidator.validate();
 });
 
 addButton.addEventListener('click', () => {
   addPopup.open({ name: '', imageLink: '' });
+  addPopupValidator.validate();
 });
