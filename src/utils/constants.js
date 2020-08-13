@@ -34,3 +34,6 @@ export const validationSettings = {
 
 export const editButton = document.querySelector('.button_type_edit');
 export const addButton = document.querySelector('.button_type_add');
+
+export const editPopupForm = document.querySelector('.popup_type_edit').querySelector('.popup__form');
+export const addPopupForm = document.querySelector('.popup_type_add').querySelector('.popup__form');
