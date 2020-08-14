@@ -30,7 +30,10 @@ const imagePopup = new PopupWithImage('.image-popup');
 imagePopup.setEventListeners();
 
 const editPopupValidator = new FormValidator(validationSettings, editPopupForm);
+editPopupValidator.enableValidation();
+
 const addPopupValidator = new FormValidator(validationSettings, addPopupForm);
+addPopupValidator.enableValidation();
 
 const createCard = (name, imageLink) => {
   const card = new Card(name, imageLink, '#element-template', (name, imageLink) => {
