@@ -5,6 +5,7 @@ import UserInfo from '../components/UserInfo.js';
 import Card from '../components/Card.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
+import PopupConfirmation from '../components/PopupConfirmation.js';
 import FormValidator from '../components/FormValidator.js';
 
 const userInfo = new UserInfo('.profile__title', '.profile__text');
@@ -26,11 +27,8 @@ const addPopup = new PopupWithForm({
 });
 addPopup.setEventListeners();
 
-const deletePopup = new PopupWithForm({
-  popupSelector: '.popup_type_delete',
-  handleFormSubmit: () => {
-    console.log('delete');
-  }
+const deletePopup = new PopupConfirmation({
+  popupSelector: '.popup_type_delete'
 });
 deletePopup.setEventListeners();
 
@@ -43,13 +41,18 @@ editPopupValidator.enableValidation();
 const addPopupValidator = new FormValidator(validationSettings, addPopupForm);
 addPopupValidator.enableValidation();
 
-const createCard = (name, imageLink) => {
-  const card = new Card(name, imageLink, '#element-template', (name, imageLink) => {
-    imagePopup.open(name, imageLink);
-  }, (element) => {
+const cardClickHandler = (name, imageLink) => {
+  imagePopup.open(name, imageLink);
+};
+
+const cardDeleteHandler = (element) => {
+  deletePopup.open(() => {
     element.remove();
   });
+};
 
+const createCard = (name, imageLink) => {
+  const card = new Card(name, imageLink, '#element-template', cardClickHandler, cardDeleteHandler);
   return card.getElement();
 };
 
@@ -71,5 +74,3 @@ addButton.addEventListener('click', () => {
   addPopup.open({ name: '', imageLink: '' });
   addPopupValidator.validate();
 });
-
-deletePopup.open();
