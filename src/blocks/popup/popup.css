@@ -4,8 +4,7 @@
 @import url(./__container/popup__container.css);
 @import url(./__title/popup__title.css);
 @import url(./__fieldset/popup__feildset.css);
-@import url(./__input-name/popup__input-name.css);
-@import url(./__input-description/popup__input-description.css);
+@import url(./__input-text/popup__input-text.css);
 @import url(./__input-error/popup__input-error.css);
 @import url(./__input-error/_hidden/popup__input-error_hidden.css);
 
