@@ -8,7 +8,7 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import PopupConfirmation from '../components/PopupConfirmation.js';
 import FormValidator from '../components/FormValidator.js';
 
-const userInfo = new UserInfo('.profile__title', '.profile__text');
+const userInfo = new UserInfo('.profile__title', '.profile__text', '.profile__avatar');
 
 const avatarPopup = new PopupWithForm({
   popupSelector: '.popup_type_avatar',
@@ -87,6 +87,7 @@ addButton.addEventListener('click', () => {
 });
 
 avatarImage.addEventListener('click', () => {
-  avatarPopup.open({ avatarLink: '' }); //TODO
+  const { avatarLink } = userInfo.getUserInfo();
+  avatarPopup.open({ avatarLink });
   avatarPopupValidator.validate();
 });
