@@ -26,6 +26,14 @@ const addPopup = new PopupWithForm({
 });
 addPopup.setEventListeners();
 
+const deletePopup = new PopupWithForm({
+  popupSelector: '.popup_type_delete',
+  handleFormSubmit: () => {
+    console.log('delete');
+  }
+});
+deletePopup.setEventListeners();
+
 const imagePopup = new PopupWithImage('.image-popup');
 imagePopup.setEventListeners();
 
@@ -38,6 +46,8 @@ addPopupValidator.enableValidation();
 const createCard = (name, imageLink) => {
   const card = new Card(name, imageLink, '#element-template', (name, imageLink) => {
     imagePopup.open(name, imageLink);
+  }, (element) => {
+    element.remove();
   });
 
   return card.getElement();
@@ -61,3 +71,5 @@ addButton.addEventListener('click', () => {
   addPopup.open({ name: '', imageLink: '' });
   addPopupValidator.validate();
 });
+
+deletePopup.open();

@@ -8,7 +8,7 @@ class PopupWithForm extends Popup {
     this._handleFormSubmit = handleFormSubmit;
   }
 
-  open(values) {
+  open(values = {}) {
     super.open();
 
     Object.entries(values).forEach(([ name, value ]) => {
