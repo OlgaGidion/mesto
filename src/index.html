@@ -71,6 +71,21 @@
       </div>
     </div>
 
+    <div class="popup popup_type_avatar">
+      <div class="popup__overlay popup__overlay_opacity_low"></div>
+      <div class="popup__container">
+        <button class="button button_type_close" type="button"></button>
+        <h2 class="popup__title">Обновить аватар</h2>
+        <form class="popup__form" name="profile-details" novalidate>
+          <fieldset class="popup__fieldset">
+            <input id="popup_avatar_input_link" class="popup__input-text input-text" name="avatarLink" type="url" placeholder="Ссылка на аватар" required>
+            <span id="popup_avatar_input_link_error" class="popup__input-error popup__input-error_hidden"></span>
+            <button class="button button_type_submit">Сохранить</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+
     <div class="image-popup">
       <div class="popup__overlay popup__overlay_opacity_high"></div>
       <figure class="image-popup__figure">

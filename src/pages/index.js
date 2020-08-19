@@ -1,5 +1,5 @@
 import './index.css';
-import { initialCards, validationSettings, editButton, addButton, addPopupForm, editPopupForm } from '../utils/constants.js';
+import { initialCards, validationSettings, editButton, addButton, avatarImage, addPopupForm, editPopupForm, avatarPopupForm } from '../utils/constants.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import Card from '../components/Card.js';
@@ -9,6 +9,14 @@ import PopupConfirmation from '../components/PopupConfirmation.js';
 import FormValidator from '../components/FormValidator.js';
 
 const userInfo = new UserInfo('.profile__title', '.profile__text');
+
+const avatarPopup = new PopupWithForm({
+  popupSelector: '.popup_type_avatar',
+  handleFormSubmit: ({ avatarLink }) => {
+    console.log(avatarLink);
+  }
+});
+avatarPopup.setEventListeners();
 
 const editPopup = new PopupWithForm({
   popupSelector: '.popup_type_edit',
@@ -40,6 +48,9 @@ editPopupValidator.enableValidation();
 
 const addPopupValidator = new FormValidator(validationSettings, addPopupForm);
 addPopupValidator.enableValidation();
+
+const avatarPopupValidator = new FormValidator(validationSettings, avatarPopupForm);
+avatarPopupValidator.enableValidation();
 
 const cardClickHandler = (name, imageLink) => {
   imagePopup.open(name, imageLink);
@@ -73,4 +84,9 @@ editButton.addEventListener('click', () => {
 addButton.addEventListener('click', () => {
   addPopup.open({ name: '', imageLink: '' });
   addPopupValidator.validate();
+});
+
+avatarImage.addEventListener('click', () => {
+  avatarPopup.open({ avatarLink: '' }); //TODO
+  avatarPopupValidator.validate();
 });
