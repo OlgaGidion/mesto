@@ -1,5 +1,5 @@
 import './index.css';
-import { initialCards, validationSettings, editButton, addButton, avatarImage, addPopupForm, editPopupForm, avatarPopupForm } from '../utils/constants.js';
+import { initialCards, validationSettings, editButton, addButton, avatarButton, addPopupForm, editPopupForm, avatarPopupForm } from '../utils/constants.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import Card from '../components/Card.js';
@@ -86,7 +86,7 @@ addButton.addEventListener('click', () => {
   addPopupValidator.validate();
 });
 
-avatarImage.addEventListener('click', () => {
+avatarButton.addEventListener('click', () => {
   const { avatarLink } = userInfo.getUserInfo();
   avatarPopup.open({ avatarLink });
   avatarPopupValidator.validate();
