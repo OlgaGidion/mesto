@@ -1,8 +1,10 @@
-@import url(../profile/__avatar/profile__avatar.css);
-@import url(../profile/__info/profile__info.css);
-@import url(../profile/__title-container/profile__title-container\ .css);
-@import url(../profile/__title/profile__title.css);
-@import url(../profile/__text/profile__text.css);
+@import url(./__avatar-button/profile__avatar-button.css);
+@import url(./__avatar-image/profile__avatar-image.css);
+@import url(./__avatar-overlay/profile__avatar-overlay.css);
+@import url(./__info/profile__info.css);
+@import url(./__title-container/profile__title-container.css);
+@import url(./__title/profile__title.css);
+@import url(./__text/profile__text.css);
 
 .profile {
   margin-top: 36px;
