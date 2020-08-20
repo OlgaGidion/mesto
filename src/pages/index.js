@@ -8,7 +8,7 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import PopupConfirmation from '../components/PopupConfirmation.js';
 import FormValidator from '../components/FormValidator.js';
 
-const userInfo = new UserInfo('.profile__title', '.profile__text', '.profile__avatar');
+const userInfo = new UserInfo('.profile__title', '.profile__text', '.profile__avatar-image');
 
 const avatarPopup = new PopupWithForm({
   popupSelector: '.popup_type_avatar',

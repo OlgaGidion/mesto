@@ -1,3 +1,7 @@
+* {
+  outline: 1px red solid;
+}
+
 .root {
   background-color: black;
   color: white;
