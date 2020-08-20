@@ -1,5 +1,6 @@
 import './index.css';
 import { initialCards, validationSettings, editButton, addButton, avatarButton, addPopupForm, editPopupForm, avatarPopupForm } from '../utils/constants.js';
+import Api from '../utils/Api.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import Card from '../components/Card.js';
@@ -91,3 +92,16 @@ avatarButton.addEventListener('click', () => {
   avatarPopup.open({ avatarLink });
   avatarPopupValidator.validate();
 });
+
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-14',
+  token: 'b77784c0-9ff1-452f-b582-ae1b85f02ec1'
+});
+
+api.getUserInfo()
+  .then(user => {
+    userInfo.setUserInfo(user.name, user.about);
+  })
+  .catch(error => {
+    console.log('ERROR: ' + error); // TODO
+  });
