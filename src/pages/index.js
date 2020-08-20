@@ -1,5 +1,5 @@
 import './index.css';
-import { initialCards, validationSettings, editButton, addButton, avatarButton, addPopupForm, editPopupForm, avatarPopupForm } from '../utils/constants.js';
+import { validationSettings, editButton, addButton, avatarButton, addPopupForm, editPopupForm, avatarPopupForm } from '../utils/constants.js';
 import Api from '../utils/Api.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
@@ -69,7 +69,7 @@ const createCard = (name, imageLink) => {
 };
 
 const cardsSection = new Section({
-  data: initialCards,
+  data: [],
   renderer: ({ name, link }) => {
     cardsSection.setItem(createCard(name, link));
   }
@@ -104,4 +104,12 @@ api.getUserInfo()
   })
   .catch(error => {
     console.log('ERROR: ' + error); // TODO
+  });
+
+api.getCard()
+  .then((cards) => {
+    cards.forEach(({ name, link }) => {
+      const card = createCard(name, link);
+      cardsSection.setItem(card);
+    });
   });

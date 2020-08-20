@@ -22,6 +22,22 @@ class Api {
       });
     });
   }
+
+  getCard() {
+    return new Promise((resolve, reject) => {
+      fetch(this._baseUrl + '/cards', {
+        method: 'GET',
+        headers: this._headers
+      })
+      .then((res) => {
+        if (res.ok) {
+          resolve(res.json());
+          return;
+        }
+        reject(res.status);
+      });
+    });
+  }
 }
 
 export default Api;
