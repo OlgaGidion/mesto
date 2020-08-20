@@ -1,4 +1,6 @@
 .button_type_like {
+  display: block;
+  margin-bottom: 1px;
   height: 21px;
   width: 21px;
   border: none;
@@ -7,7 +9,6 @@
   background-repeat: no-repeat;
   background-position: center center;
   box-sizing: border-box;
-  flex-shrink: 0;
 }
 
 .button_type_like:hover {
