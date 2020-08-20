@@ -22,7 +22,11 @@ avatarPopup.setEventListeners();
 const editPopup = new PopupWithForm({
   popupSelector: '.popup_type_edit',
   handleFormSubmit: ({ name, about }) => {
-    userInfo.setUserInfo(name, about);
+    api.updateUserInfo(name, about)
+      .then(({ name, about }) => {
+        userInfo.setUserInfo(name, about);
+        editPopup.close();
+      });
   }
 });
 editPopup.setEventListeners();

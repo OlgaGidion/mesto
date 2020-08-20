@@ -38,6 +38,23 @@ class Api {
       });
     });
   }
+
+  updateUserInfo(name, about) {
+    return new Promise((resolve, reject) => {
+      fetch(this._baseUrl + '/users/me', {
+        method: 'PATCH',
+        headers: this._headers,
+        body: JSON.stringify({name, about})
+      })
+      .then((res) => {
+        if (res.ok) {
+          resolve(res.json());
+          return;
+        }
+        reject(res.status);
+      });
+    });
+  }
 }
 
 export default Api;
