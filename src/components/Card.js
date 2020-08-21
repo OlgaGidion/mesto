@@ -1,8 +1,9 @@
 class Card {
-  constructor(name, imageLink, elementTemplateSelector, handleCardClick, handleCardDelete) {
+  constructor(name, imageLink, elementTemplateSelector, showDeleteButton, handleCardClick, handleCardDelete) {
     this._name = name;
     this._imageLink = imageLink;
     this._elementTemplate = document.querySelector(elementTemplateSelector);
+    this._showDeleteButton = showDeleteButton;
     this._handleCardClick = handleCardClick;
     this._handleCardDelete = handleCardDelete;
   }
@@ -13,6 +14,10 @@ class Card {
     const title = element.querySelector('.elements__title');
     const deleteButton = element.querySelector('.button_type_delete');
     const likeButton = element.querySelector('.button_type_like');
+
+    if (!this._showDeleteButton) {
+      deleteButton.classList.add('button_hidden');
+    }
 
     image.addEventListener('click', () => this._imageClickHandler());
     deleteButton.addEventListener('click', (evt) => this._deleteButtonHandler(evt));

@@ -39,9 +39,8 @@ const addPopup = new PopupWithForm({
   popupSelector: '.popup_type_add',
   handleFormSubmit: ({ name, imageLink }) => {
     api.addCard(name, imageLink)
-    .then(({ name, link }) => {
-        const newCard = createCard(name, link);
-        cardsSection.setItem(newCard);
+    .then((card) => {
+        cardsSection.addItem(card);
         addPopup.close();
       });
   }
@@ -75,18 +74,15 @@ const cardDeleteHandler = (element) => {
   });
 };
 
-const createCard = (name, imageLink) => {
-  const card = new Card(name, imageLink, '#element-template', cardClickHandler, cardDeleteHandler);
-  return card.getElement();
-};
-
 const cardsSection = new Section({
-  data: [],
-  renderer: ({ name, link }) => {
-    cardsSection.setItem(createCard(name, link));
+  renderer: ({ name, link, owner }) => {
+    const myId = userInfo.getUserInfo().id;
+    const isMyCard = owner._id === myId;
+    const card = new Card(name, link, '#element-template', isMyCard, cardClickHandler, cardDeleteHandler);
+
+    return card.getElement();
   }
 }, '.elements__list');
-cardsSection.renderItems();
 
 editButton.addEventListener('click', () => {
   const { name, about } = userInfo.getUserInfo();
@@ -120,8 +116,7 @@ api.getUserInfo()
 
 api.getCards()
   .then((cards) => {
-    cards.forEach(({ name, link }) => {
-      const card = createCard(name, link);
-      cardsSection.setItem(card);
+    cards.reverse().forEach((card) => {
+      cardsSection.addItem(card);
     });
   });
