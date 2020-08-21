@@ -1,5 +1,6 @@
 class Card {
-  constructor(name, imageLink, elementTemplateSelector, showDeleteButton, handleCardClick, handleCardDelete) {
+  constructor(id, name, imageLink, elementTemplateSelector, showDeleteButton, handleCardClick, handleCardDelete) {
+    this._id = id;
     this._name = name;
     this._imageLink = imageLink;
     this._elementTemplate = document.querySelector(elementTemplateSelector);
@@ -38,7 +39,7 @@ class Card {
     evt.preventDefault();
 
     const element = evt.currentTarget.closest('.elements__item');
-    this._handleCardDelete(element);
+    this._handleCardDelete(element, this._id);
   }
 
   _likeButtonHandler(evt) {

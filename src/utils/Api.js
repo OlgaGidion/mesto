@@ -56,6 +56,22 @@ class Api {
     });
   }
 
+  deleteCard(cardId) {
+    return new Promise((resolve, reject) => {
+      fetch(this._baseUrl + '/cards/' + cardId, {
+        method: 'DELETE',
+        headers: this._headers
+      })
+      .then((res) => {
+        if (res.ok) {
+          resolve(res.json());
+          return;
+        }
+        reject(res.status);
+      });
+    });
+  }
+
   updateUserInfo(name, about) {
     return new Promise((resolve, reject) => {
       fetch(this._baseUrl + '/users/me', {

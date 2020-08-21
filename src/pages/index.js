@@ -39,10 +39,10 @@ const addPopup = new PopupWithForm({
   popupSelector: '.popup_type_add',
   handleFormSubmit: ({ name, imageLink }) => {
     api.addCard(name, imageLink)
-    .then((card) => {
-        cardsSection.addItem(card);
-        addPopup.close();
-      });
+      .then((card) => {
+          cardsSection.addItem(card);
+          addPopup.close();
+        });
   }
 });
 addPopup.setEventListeners();
@@ -68,17 +68,20 @@ const cardClickHandler = (name, imageLink) => {
   imagePopup.open(name, imageLink);
 };
 
-const cardDeleteHandler = (element) => {
+const cardDeleteHandler = (element, cardId) => {
   deletePopup.open(() => {
-    element.remove();
+    api.deleteCard(cardId)
+      .then(() => {
+        element.remove();
+      });
   });
 };
 
 const cardsSection = new Section({
-  renderer: ({ name, link, owner }) => {
+  renderer: ({ _id, name, link, owner }) => {
     const myId = userInfo.getUserInfo().id;
     const isMyCard = owner._id === myId;
-    const card = new Card(name, link, '#element-template', isMyCard, cardClickHandler, cardDeleteHandler);
+    const card = new Card(_id, name, link, '#element-template', isMyCard, cardClickHandler, cardDeleteHandler);
 
     return card.getElement();
   }
