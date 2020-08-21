@@ -14,7 +14,11 @@ const userInfo = new UserInfo('.profile__title', '.profile__text', '.profile__av
 const avatarPopup = new PopupWithForm({
   popupSelector: '.popup_type_avatar',
   handleFormSubmit: ({ avatarLink }) => {
-    console.log(avatarLink);
+    api.updateAvatar(avatarLink)
+      .then(({ name, about, avatar }) => {
+        userInfo.setUserInfo(name, about, avatar);
+        avatarPopup.close();
+      });
   }
 });
 avatarPopup.setEventListeners();

@@ -55,6 +55,23 @@ class Api {
       });
     });
   }
+
+  updateAvatar(avatar) {
+    return new Promise((resolve, reject) => {
+      fetch(this._baseUrl + '/users/me/avatar', {
+        method: 'PATCH',
+        headers: this._headers,
+        body: JSON.stringify({avatar})
+      })
+      .then((res) => {
+        if (res.ok) {
+          resolve(res.json());
+          return;
+        }
+        reject(res.status);
+      });
+    });
+  }
 }
 
 export default Api;
