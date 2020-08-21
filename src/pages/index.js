@@ -15,8 +15,8 @@ const avatarPopup = new PopupWithForm({
   popupSelector: '.popup_type_avatar',
   handleFormSubmit: ({ avatarLink }) => {
     api.updateAvatar(avatarLink)
-      .then(({ name, about, avatar }) => {
-        userInfo.setUserInfo(name, about, avatar);
+      .then(({ _id, name, about, avatar }) => {
+        userInfo.setUserInfo(_id, name, about, avatar);
         avatarPopup.close();
       });
   }
@@ -27,8 +27,8 @@ const editPopup = new PopupWithForm({
   popupSelector: '.popup_type_edit',
   handleFormSubmit: ({ name, about }) => {
     api.updateUserInfo(name, about)
-      .then(({ name, about, avatar }) => {
-        userInfo.setUserInfo(name, about, avatar);
+      .then(({ _id, name, about, avatar }) => {
+        userInfo.setUserInfo(_id, name, about, avatar);
         editPopup.close();
       });
   }
@@ -111,8 +111,8 @@ const api = new Api({
 });
 
 api.getUserInfo()
-  .then(({ name, about, avatar }) => {
-    userInfo.setUserInfo(name, about, avatar);
+  .then(({ _id, name, about, avatar }) => {
+    userInfo.setUserInfo(_id, name, about, avatar);
   })
   .catch(error => {
     console.log('ERROR: ' + error); // TODO
