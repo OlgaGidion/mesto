@@ -39,6 +39,23 @@ class Api {
     });
   }
 
+  addCard(name, link) {
+    return new Promise((resolve, reject) => {
+      fetch(this._baseUrl + '/cards', {
+        method: 'POST',
+        headers: this._headers,
+        body: JSON.stringify({name, link})
+      })
+      .then((res) => {
+        if (res.ok) {
+          resolve(res.json());
+          return;
+        }
+        reject(res.status);
+      });
+    });
+  }
+
   updateUserInfo(name, about) {
     return new Promise((resolve, reject) => {
       fetch(this._baseUrl + '/users/me', {

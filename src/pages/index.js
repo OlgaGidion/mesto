@@ -38,8 +38,12 @@ editPopup.setEventListeners();
 const addPopup = new PopupWithForm({
   popupSelector: '.popup_type_add',
   handleFormSubmit: ({ name, imageLink }) => {
-    const newCard = createCard(name, imageLink);
-    cardsSection.setItem(newCard);
+    api.addCard(name, imageLink)
+    .then(({ name, link }) => {
+        const newCard = createCard(name, link);
+        cardsSection.setItem(newCard);
+        addPopup.close();
+      });
   }
 });
 addPopup.setEventListeners();
