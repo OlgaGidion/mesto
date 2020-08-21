@@ -23,8 +23,8 @@ const editPopup = new PopupWithForm({
   popupSelector: '.popup_type_edit',
   handleFormSubmit: ({ name, about }) => {
     api.updateUserInfo(name, about)
-      .then(({ name, about }) => {
-        userInfo.setUserInfo(name, about);
+      .then(({ name, about, avatar }) => {
+        userInfo.setUserInfo(name, about, avatar);
         editPopup.close();
       });
   }
@@ -103,8 +103,8 @@ const api = new Api({
 });
 
 api.getUserInfo()
-  .then(user => {
-    userInfo.setUserInfo(user.name, user.about);
+  .then(({ name, about, avatar }) => {
+    userInfo.setUserInfo(name, about, avatar);
   })
   .catch(error => {
     console.log('ERROR: ' + error); // TODO
