@@ -114,7 +114,7 @@ api.getUserInfo()
     console.log('ERROR: ' + error); // TODO
   });
 
-api.getCard()
+api.getCards()
   .then((cards) => {
     cards.forEach(({ name, link }) => {
       const card = createCard(name, link);

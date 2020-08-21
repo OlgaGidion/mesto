@@ -23,7 +23,7 @@ class Api {
     });
   }
 
-  getCard() {
+  getCards() {
     return new Promise((resolve, reject) => {
       fetch(this._baseUrl + '/cards', {
         method: 'GET',
