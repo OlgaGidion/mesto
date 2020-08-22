@@ -78,10 +78,10 @@ const cardDeleteHandler = (element, cardId) => {
 };
 
 const cardsSection = new Section({
-  renderer: ({ _id, name, link, owner }) => {
+  renderer: ({ _id, name, link, likes, owner }) => {
     const myId = userInfo.getUserInfo().id;
     const isMyCard = owner._id === myId;
-    const card = new Card(_id, name, link, '#element-template', isMyCard, cardClickHandler, cardDeleteHandler);
+    const card = new Card(_id, name, link, likes.length, '#element-template', isMyCard, cardClickHandler, cardDeleteHandler);
 
     return card.getElement();
   }

@@ -1,8 +1,9 @@
 class Card {
-  constructor(id, name, imageLink, elementTemplateSelector, showDeleteButton, handleCardClick, handleCardDelete) {
+  constructor(id, name, imageLink, likeCount, elementTemplateSelector, showDeleteButton, handleCardClick, handleCardDelete) {
     this._id = id;
     this._name = name;
     this._imageLink = imageLink;
+    this._likeCount = likeCount;
     this._elementTemplate = document.querySelector(elementTemplateSelector);
     this._showDeleteButton = showDeleteButton;
     this._handleCardClick = handleCardClick;
@@ -13,6 +14,7 @@ class Card {
     const element = this._elementTemplate.content.cloneNode(true);
     const image = element.querySelector('.elements__image');
     const title = element.querySelector('.elements__title');
+    const likeCount = element.querySelector('.elements__like-count');
     const deleteButton = element.querySelector('.button_type_delete');
     const likeButton = element.querySelector('.button_type_like');
 
@@ -27,6 +29,7 @@ class Card {
     image.setAttribute('src', this._imageLink);
     image.setAttribute('alt', this._name);
     title.textContent = this._name;
+    likeCount.textContent = this._likeCount;
 
     return element;
   }
