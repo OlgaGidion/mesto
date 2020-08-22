@@ -1,9 +1,10 @@
 class Card {
-  constructor(id, name, imageLink, likeCount, elementTemplateSelector, showDeleteButton, handleCardClick, handleCardDelete) {
+  constructor(id, name, imageLink, likeCount, isLiked, elementTemplateSelector, showDeleteButton, handleCardClick, handleCardDelete) {
     this._id = id;
     this._name = name;
     this._imageLink = imageLink;
     this._likeCount = likeCount;
+    this._isLiked = isLiked;
     this._elementTemplate = document.querySelector(elementTemplateSelector);
     this._showDeleteButton = showDeleteButton;
     this._handleCardClick = handleCardClick;
@@ -20,6 +21,10 @@ class Card {
 
     if (!this._showDeleteButton) {
       deleteButton.classList.add('button_hidden');
+    }
+
+    if (this._isLiked) {
+      likeButton.classList.add('button_type_like-selected');
     }
 
     image.addEventListener('click', () => this._imageClickHandler());
