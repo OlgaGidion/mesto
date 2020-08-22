@@ -1,5 +1,5 @@
 class Card {
-  constructor(id, name, imageLink, likeCount, isLiked, elementTemplateSelector, showDeleteButton, handleCardClick, handleCardDelete) {
+  constructor(id, name, imageLink, likeCount, isLiked, elementTemplateSelector, showDeleteButton, handleCardClick, handleCardDelete, handleLike, handleUnlike) {
     this._id = id;
     this._name = name;
     this._imageLink = imageLink;
@@ -9,6 +9,8 @@ class Card {
     this._showDeleteButton = showDeleteButton;
     this._handleCardClick = handleCardClick;
     this._handleCardDelete = handleCardDelete;
+    this._handleLike = handleLike;
+    this._handleUnlike = handleUnlike;
   }
 
   getElement() {
@@ -29,7 +31,7 @@ class Card {
 
     image.addEventListener('click', () => this._imageClickHandler());
     deleteButton.addEventListener('click', (evt) => this._deleteButtonHandler(evt));
-    likeButton.addEventListener('click', this._likeButtonHandler);
+    likeButton.addEventListener('click', (evt) => this._likeButtonHandler(evt));
 
     image.setAttribute('src', this._imageLink);
     image.setAttribute('alt', this._name);
@@ -53,7 +55,11 @@ class Card {
   _likeButtonHandler(evt) {
     evt.preventDefault();
 
-    evt.currentTarget.classList.toggle('button_type_like-selected');
+    if (!this._isLiked) {
+      this._handleLike(this._id);
+    } else {
+      this._handleUnlike(this._id);
+    }
   }
 }
 

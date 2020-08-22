@@ -105,6 +105,38 @@ class Api {
       });
     });
   }
+
+  likeCard(cardId) {
+    return new Promise((resolve, reject) => {
+      fetch(this._baseUrl + '/cards/likes/' + cardId, {
+        method: 'PUT',
+        headers: this._headers
+      })
+      .then((res) => {
+        if (res.ok) {
+          resolve(res.json());
+          return;
+        }
+        reject(res.status);
+      });
+    });
+  }
+
+  unlikeCard(cardId) {
+    return new Promise((resolve, reject) => {
+      fetch(this._baseUrl + '/cards/likes/' + cardId, {
+        method: 'DELETE',
+        headers: this._headers
+      })
+      .then((res) => {
+        if (res.ok) {
+          resolve(res.json());
+          return;
+        }
+        reject(res.status);
+      });
+    });
+  }
 }
 
 export default Api;
