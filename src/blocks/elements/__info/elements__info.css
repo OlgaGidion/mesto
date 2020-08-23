@@ -2,5 +2,6 @@
   background-color: white;
   display: flex;
   align-items: center;
-  padding: 25px 15px 31px 21px;
+  padding: 0 21px;
+  height: 80px;
 }
