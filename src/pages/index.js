@@ -13,6 +13,7 @@ const userInfo = new UserInfo('.profile__title', '.profile__text', '.profile__av
 
 const avatarPopup = new PopupWithForm({
   popupSelector: '.popup_type_avatar',
+  submittingButtonText: 'Сохранение...',
   handleFormSubmit: ({ avatarLink }) => {
     api.updateAvatar(avatarLink)
       .then(({ _id, name, about, avatar }) => {
@@ -25,7 +26,9 @@ avatarPopup.setEventListeners();
 
 const editPopup = new PopupWithForm({
   popupSelector: '.popup_type_edit',
+  submittingButtonText: 'Сохранение...',
   handleFormSubmit: ({ name, about }) => {
+
     api.updateUserInfo(name, about)
       .then(({ _id, name, about, avatar }) => {
         userInfo.setUserInfo(_id, name, about, avatar);
@@ -37,6 +40,7 @@ editPopup.setEventListeners();
 
 const addPopup = new PopupWithForm({
   popupSelector: '.popup_type_add',
+  submittingButtonText: 'Создание...',
   handleFormSubmit: ({ name, imageLink }) => {
     api.addCard(name, imageLink)
       .then((card) => {
