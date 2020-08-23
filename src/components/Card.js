@@ -26,10 +26,6 @@ class Card {
       deleteButton.classList.add('button_hidden');
     }
 
-    if (this._isLiked) {
-      this._likeButton.classList.add('button_type_like-selected');
-    }
-
     imageElement.addEventListener('click', () => this._imageClickHandler());
     deleteButton.addEventListener('click', (evt) => this._deleteButtonHandler(evt));
     this._likeButton.addEventListener('click', (evt) => this._likeButtonHandler(evt));
@@ -37,9 +33,20 @@ class Card {
     imageElement.setAttribute('src', this._imageLink);
     imageElement.setAttribute('alt', this._name);
     titleElement.textContent = this._name;
-    this._likeCountElement.textContent = this._likeCount;
+
+    this._updateLikes();
 
     return element;
+  }
+
+  _updateLikes() {
+    this._likeCountElement.textContent = this._likeCount;
+
+    if (this._isLiked) {
+      this._likeButton.classList.add('button_type_like-selected');
+    } else {
+      this._likeButton.classList.remove('button_type_like-selected');
+    }
   }
 
   _imageClickHandler() {
@@ -66,13 +73,7 @@ class Card {
 
     this._isLiked = !this._isLiked;
 
-    this._likeCountElement.textContent = this._likeCount;
-
-    if (this._isLiked) {
-      this._likeButton.classList.add('button_type_like-selected');
-    } else {
-      this._likeButton.classList.remove('button_type_like-selected');
-    }
+    this._updateLikes();
   }
 }
 
