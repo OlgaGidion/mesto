@@ -15,28 +15,29 @@ class Card {
 
   getElement() {
     const element = this._elementTemplate.content.cloneNode(true);
-    const image = element.querySelector('.elements__image');
-    const title = element.querySelector('.elements__title');
-    const likeCount = element.querySelector('.elements__like-count');
+
+    const imageElement = element.querySelector('.elements__image');
+    const titleElement = element.querySelector('.elements__title');
     const deleteButton = element.querySelector('.button_type_delete');
-    const likeButton = element.querySelector('.button_type_like');
+    this._likeCountElement = element.querySelector('.elements__like-count');
+    this._likeButton = element.querySelector('.button_type_like');
 
     if (!this._showDeleteButton) {
       deleteButton.classList.add('button_hidden');
     }
 
     if (this._isLiked) {
-      likeButton.classList.add('button_type_like-selected');
+      this._likeButton.classList.add('button_type_like-selected');
     }
 
-    image.addEventListener('click', () => this._imageClickHandler());
+    imageElement.addEventListener('click', () => this._imageClickHandler());
     deleteButton.addEventListener('click', (evt) => this._deleteButtonHandler(evt));
-    likeButton.addEventListener('click', (evt) => this._likeButtonHandler(evt));
+    this._likeButton.addEventListener('click', (evt) => this._likeButtonHandler(evt));
 
-    image.setAttribute('src', this._imageLink);
-    image.setAttribute('alt', this._name);
-    title.textContent = this._name;
-    likeCount.textContent = this._likeCount;
+    imageElement.setAttribute('src', this._imageLink);
+    imageElement.setAttribute('alt', this._name);
+    titleElement.textContent = this._name;
+    this._likeCountElement.textContent = this._likeCount;
 
     return element;
   }
@@ -56,9 +57,21 @@ class Card {
     evt.preventDefault();
 
     if (!this._isLiked) {
+      this._likeCount++;
       this._handleLike(this._id);
     } else {
+      this._likeCount--;
       this._handleUnlike(this._id);
+    }
+
+    this._isLiked = !this._isLiked;
+
+    this._likeCountElement.textContent = this._likeCount;
+
+    if (this._isLiked) {
+      this._likeButton.classList.add('button_type_like-selected');
+    } else {
+      this._likeButton.classList.remove('button_type_like-selected');
     }
   }
 }

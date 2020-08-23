@@ -79,13 +79,13 @@ const cardDeleteHandler = (element, cardId) => {
 
 const cardLikeHandler = (cardId) => {
   api.likeCard(cardId)
-    .then(() => {
+    .then((card) => {
     });
 };
 
 const cardUnlikeHandler = (cardId) => {
   api.unlikeCard(cardId)
-    .then(() => {
+    .then((card) => {
     });
 };
 
