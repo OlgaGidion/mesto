@@ -23,7 +23,7 @@ class Card {
     this._likeButton = element.querySelector('.button_type_like');
 
     if (!this._showDeleteButton) {
-      deleteButton.classList.add('button_hidden');
+      deleteButton.classList.add('hidden');
     }
 
     imageElement.addEventListener('click', () => this._imageClickHandler());
