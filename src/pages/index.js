@@ -88,10 +88,10 @@ const cardClickHandler = (name, imageLink) => {
 
 const cardDeleteHandler = (element, cardId) => {
   deletePopup.open(() => {
+    deletePopup.close();
+    element.remove();
+
     api.deleteCard(cardId)
-      .then(() => {
-        element.remove();
-      })
       .catch((err) => {
         console.log(err);
       });

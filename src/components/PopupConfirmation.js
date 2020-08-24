@@ -18,7 +18,6 @@ class PopupConfirmation extends Popup {
 
     this._confirmButton.addEventListener('click', () => {
       this._handleConfirm();
-      this.close();
     });
   }
 }
