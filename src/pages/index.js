@@ -1,5 +1,5 @@
 import './index.css';
-import { validationSettings, editButton, addButton, avatarButton, addPopupForm, editPopupForm, avatarPopupForm } from '../utils/constants.js';
+import { validationSettings, preloader, content, editButton, addButton, avatarButton, addPopupForm, editPopupForm, avatarPopupForm } from '../utils/constants.js';
 import Api from '../utils/Api.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
@@ -141,19 +141,22 @@ avatarButton.addEventListener('click', () => {
   avatarPopupValidator.validate();
 });
 
-api.getUserInfo()
+const getUserInfo = api.getUserInfo()
   .then(({ _id, name, about, avatar }) => {
     userInfo.setUserInfo(_id, name, about, avatar);
-  })
-  .catch((err) => {
-    console.log(err);
   });
 
-api.getCards()
+const getCards = api.getCards()
   .then((cards) => {
     cards.reverse().forEach((card) => {
       cardsSection.addItem(card);
     });
+  });
+
+Promise.all([getUserInfo, getCards])
+  .then(() => {
+    preloader.classList.add('preloader_hidden');
+    content.classList.remove('content_hidden');
   })
   .catch((err) => {
     console.log(err);
