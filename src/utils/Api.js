@@ -13,13 +13,7 @@ class Api {
         method: 'GET',
         headers: this._headers
       })
-      .then((res) => {
-        if (res.ok) {
-          resolve(res.json());
-          return;
-        }
-        reject(res.status);
-      });
+      .then((res) => this._handleResponse(res, resolve, reject));
     });
   }
 
@@ -29,13 +23,7 @@ class Api {
         method: 'GET',
         headers: this._headers
       })
-      .then((res) => {
-        if (res.ok) {
-          resolve(res.json());
-          return;
-        }
-        reject(res.status);
-      });
+      .then((res) => this._handleResponse(res, resolve, reject));
     });
   }
 
@@ -46,13 +34,7 @@ class Api {
         headers: this._headers,
         body: JSON.stringify({name, link})
       })
-      .then((res) => {
-        if (res.ok) {
-          resolve(res.json());
-          return;
-        }
-        reject(res.status);
-      });
+      .then((res) => this._handleResponse(res, resolve, reject));
     });
   }
 
@@ -62,13 +44,7 @@ class Api {
         method: 'DELETE',
         headers: this._headers
       })
-      .then((res) => {
-        if (res.ok) {
-          resolve(res.json());
-          return;
-        }
-        reject(res.status);
-      });
+      .then((res) => this._handleResponse(res, resolve, reject));
     });
   }
 
@@ -79,13 +55,7 @@ class Api {
         headers: this._headers,
         body: JSON.stringify({name, about})
       })
-      .then((res) => {
-        if (res.ok) {
-          resolve(res.json());
-          return;
-        }
-        reject(res.status);
-      });
+      .then((res) => this._handleResponse(res, resolve, reject));
     });
   }
 
@@ -96,13 +66,7 @@ class Api {
         headers: this._headers,
         body: JSON.stringify({avatar})
       })
-      .then((res) => {
-        if (res.ok) {
-          resolve(res.json());
-          return;
-        }
-        reject(res.status);
-      });
+      .then((res) => this._handleResponse(res, resolve, reject));
     });
   }
 
@@ -112,13 +76,7 @@ class Api {
         method: 'PUT',
         headers: this._headers
       })
-      .then((res) => {
-        if (res.ok) {
-          resolve(res.json());
-          return;
-        }
-        reject(res.status);
-      });
+      .then((res) => this._handleResponse(res, resolve, reject));
     });
   }
 
@@ -128,14 +86,17 @@ class Api {
         method: 'DELETE',
         headers: this._headers
       })
-      .then((res) => {
-        if (res.ok) {
-          resolve(res.json());
-          return;
-        }
-        reject(res.status);
-      });
+      .then((res) => this._handleResponse(res, resolve, reject));
     });
+  }
+
+  _handleResponse(res, resolve, reject) {
+    if (res.ok) {
+      resolve(res.json());
+      return;
+    }
+
+    reject(`Ошибка: ${res.status} ${res.statusText}`);
   }
 }
 

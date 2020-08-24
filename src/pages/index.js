@@ -9,6 +9,11 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import PopupConfirmation from '../components/PopupConfirmation.js';
 import FormValidator from '../components/FormValidator.js';
 
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-14',
+  token: 'b77784c0-9ff1-452f-b582-ae1b85f02ec1'
+});
+
 const userInfo = new UserInfo('.profile__title', '.profile__text', '.profile__avatar-image');
 
 const avatarPopup = new PopupWithForm({
@@ -19,6 +24,9 @@ const avatarPopup = new PopupWithForm({
       .then(({ _id, name, about, avatar }) => {
         userInfo.setUserInfo(_id, name, about, avatar);
         avatarPopup.close();
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }
 });
@@ -33,6 +41,9 @@ const editPopup = new PopupWithForm({
       .then(({ _id, name, about, avatar }) => {
         userInfo.setUserInfo(_id, name, about, avatar);
         editPopup.close();
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }
 });
@@ -46,6 +57,9 @@ const addPopup = new PopupWithForm({
       .then((card) => {
           cardsSection.addItem(card);
           addPopup.close();
+        })
+        .catch((err) => {
+          console.log(err);
         });
   }
 });
@@ -77,16 +91,25 @@ const cardDeleteHandler = (element, cardId) => {
     api.deleteCard(cardId)
       .then(() => {
         element.remove();
+      })
+      .catch((err) => {
+        console.log(err);
       });
   });
 };
 
 const cardLikeHandler = (cardId) => {
-  api.likeCard(cardId);
+  api.likeCard(cardId)
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 const cardUnlikeHandler = (cardId) => {
-  api.unlikeCard(cardId);
+  api.unlikeCard(cardId)
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 const cardsSection = new Section({
@@ -118,17 +141,12 @@ avatarButton.addEventListener('click', () => {
   avatarPopupValidator.validate();
 });
 
-const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-14',
-  token: 'b77784c0-9ff1-452f-b582-ae1b85f02ec1'
-});
-
 api.getUserInfo()
   .then(({ _id, name, about, avatar }) => {
     userInfo.setUserInfo(_id, name, about, avatar);
   })
-  .catch(error => {
-    console.log('ERROR: ' + error); // TODO
+  .catch((err) => {
+    console.log(err);
   });
 
 api.getCards()
@@ -136,4 +154,7 @@ api.getCards()
     cards.reverse().forEach((card) => {
       cardsSection.addItem(card);
     });
+  })
+  .catch((err) => {
+    console.log(err);
   });
