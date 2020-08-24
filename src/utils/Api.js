@@ -8,95 +8,78 @@ class Api {
   }
 
   getUserInfo() {
-    return new Promise((resolve, reject) => {
-      fetch(this._baseUrl + '/users/me', {
+    return fetch(this._baseUrl + '/users/me', {
         method: 'GET',
         headers: this._headers
       })
-      .then((res) => this._handleResponse(res, resolve, reject));
-    });
+      .then(this._handleResponse);
   }
 
   getCards() {
-    return new Promise((resolve, reject) => {
-      fetch(this._baseUrl + '/cards', {
+    return fetch(this._baseUrl + '/cards', {
         method: 'GET',
         headers: this._headers
       })
-      .then((res) => this._handleResponse(res, resolve, reject));
-    });
+      .then(this._handleResponse);
   }
 
   addCard(name, link) {
-    return new Promise((resolve, reject) => {
-      fetch(this._baseUrl + '/cards', {
+    return fetch(this._baseUrl + '/cards', {
         method: 'POST',
         headers: this._headers,
         body: JSON.stringify({name, link})
       })
-      .then((res) => this._handleResponse(res, resolve, reject));
-    });
+      .then(this._handleResponse);
   }
 
   deleteCard(cardId) {
-    return new Promise((resolve, reject) => {
-      fetch(this._baseUrl + '/cards/' + cardId, {
+    return fetch(this._baseUrl + '/cards/' + cardId, {
         method: 'DELETE',
         headers: this._headers
       })
-      .then((res) => this._handleResponse(res, resolve, reject));
-    });
+      .then(this._handleResponse);
   }
 
   updateUserInfo(name, about) {
-    return new Promise((resolve, reject) => {
-      fetch(this._baseUrl + '/users/me', {
+    return fetch(this._baseUrl + '/users/me', {
         method: 'PATCH',
         headers: this._headers,
         body: JSON.stringify({name, about})
       })
-      .then((res) => this._handleResponse(res, resolve, reject));
-    });
+      .then(this._handleResponse);
   }
 
   updateAvatar(avatar) {
-    return new Promise((resolve, reject) => {
-      fetch(this._baseUrl + '/users/me/avatar', {
+    return fetch(this._baseUrl + '/users/me/avatar', {
         method: 'PATCH',
         headers: this._headers,
         body: JSON.stringify({avatar})
       })
-      .then((res) => this._handleResponse(res, resolve, reject));
-    });
+      .then(this._handleResponse);
   }
 
   likeCard(cardId) {
-    return new Promise((resolve, reject) => {
-      fetch(this._baseUrl + '/cards/likes/' + cardId, {
+    return fetch(this._baseUrl + '/cards/likes/' + cardId, {
         method: 'PUT',
         headers: this._headers
       })
-      .then((res) => this._handleResponse(res, resolve, reject));
-    });
+      .then(this._handleResponse);
   }
 
   unlikeCard(cardId) {
-    return new Promise((resolve, reject) => {
-      fetch(this._baseUrl + '/cards/likes/' + cardId, {
+    return fetch(this._baseUrl + '/cards/likes/' + cardId, {
         method: 'DELETE',
         headers: this._headers
       })
-      .then((res) => this._handleResponse(res, resolve, reject));
-    });
+      .then(this._handleResponse);
   }
 
-  _handleResponse(res, resolve, reject) {
+  _handleResponse(res) {
     if (res.ok) {
-      resolve(res.json());
-      return;
+      return res.json();
     }
 
-    reject(`Ошибка: ${res.status} ${res.statusText}`);
+    return Promise.reject(`Ошибка: ${res.status} ${res.statusText}`);
   }
 }
 
