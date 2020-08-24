@@ -8,6 +8,7 @@
 
 Технические детали:
 * JavaScript
+* Работа с API
 * ООП
 * Модули
 * HTML
@@ -18,6 +19,7 @@
   * Подключаемые шрифты
 * Валидация форм
 * Методология БЭМ
+* Webpack
 * Git & GitHub
 
 [Ссылка на макет в Figma](https://www.figma.com/file/StZjf8HnoeLdiXS7dYrLAh/JavaScript.-Sprint-4)
